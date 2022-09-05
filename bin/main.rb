@@ -1,4 +1,7 @@
 class App
+  def hello
+    'Hello'
+  end
 end
 
 def main
