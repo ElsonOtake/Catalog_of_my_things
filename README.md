@@ -48,7 +48,7 @@ Cloning a repository
 
 ## Authors
 
-👤 **Andrés Garzon**
+👤 **Andrés Garzon M**
 
 - GitHub: [@githubhandle](https://github.com/andgarzonmal)
 - Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
@@ -71,6 +71,7 @@ Cloning a repository
 - GitHub: [@fibini](https://github.com/fibini)
 - Twitter: [@Onenewpage1](https://twitter.com/Onenewpage1)
 - LinkedIn: [Fabien Brathwaite](https://www.linkedin.com/in/fabien-brathwaite/)
+
 
 
 ## 🤝 Contributing
