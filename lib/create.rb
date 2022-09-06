@@ -6,7 +6,9 @@ module Create
     Source.new(name)
   end
 
-  def add_movie(source, publish_date, silent)
-    Movie.new(source, publish_date, silent)
+  # rubocop:disable Metrics/ParameterLists
+  def add_movie(genre, author, source, label, publish_date, silent)
+    Movie.new(genre, author, source, label, publish_date, silent)
   end
+  # rubocop:enable Metrics/ParameterLists
 end
