@@ -16,11 +16,6 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  def add_source(source)
-    @source = source
-    source.items << self unless source.items.include?(self)
-  end
-
   private
 
   def can_be_archived?
