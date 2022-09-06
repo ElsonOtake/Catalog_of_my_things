@@ -4,10 +4,14 @@ class Main
   include Create
 
   def tests
-    add_source('HBO Max')
-    add_source('Netflix')
-    add_source('Disney Plus')
-    add_source('Apple TV')
+    hbo = add_source('HBO Max')
+    netflix = add_source('Netflix')
+    disney = add_source('Disney Plus')
+    apple = add_source('Apple TV')
+    puts "#{hbo.id} hbo"
+    puts "#{netflix.id} netflix"
+    puts "#{disney.id} disney"
+    puts "#{apple.id} apple"
   end
 end
 
