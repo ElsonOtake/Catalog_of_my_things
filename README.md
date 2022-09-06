@@ -29,11 +29,11 @@ Cloning a repository
 
 - Copy the URL to clone the repository. 
 
-  - To clone the repository using HTTPS : `https://github.com/ElsonOtake/TVMaze.git`
+  - To clone the repository using HTTPS : `https://github.com/ElsonOtake/Catalog_of_my_things.git`
 
-  - To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority : `git@github.com:ElsonOtake/TVMaze.git`
+  - To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority : `git@github.com:ElsonOtake/Catalog_of_my_things.git`
 
-  - To clone a repository using GitHub CLI : `gh repo clone ElsonOtake/TVMaze`
+  - To clone a repository using GitHub CLI : `gh repo clone ElsonOtake/Catalog_of_my_things`
 
 - Open Terminal;
 
