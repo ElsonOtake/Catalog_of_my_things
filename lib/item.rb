@@ -13,7 +13,7 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  def set_label(label)
+  def label_setter(label)
     @label = label
   end
 
