@@ -2,6 +2,7 @@ require './source'
 
 module Create
   def add_source(name)
-    Source.new(name)
+    source = Source.new(name)
+    puts "#{source.id} #{source.name}"
   end
 end
