@@ -7,6 +7,5 @@ class Source
 
   def add_item(item)
     @items << item unless @items.include?(item)
-    item.source = self
   end
 end
