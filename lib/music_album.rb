@@ -3,10 +3,8 @@ require './lib/item'
 class MusicAlbum < Item
   attr_accessor :on_spotify, :genre
 
-  # rubocop:disable Style/OptionalBooleanParameter
-  def initialize(genre, source, on_spotify = true, *attributes)
-    # rubocop:enable Style/OptionalBooleanParameter
-    author, label, publish_date = *attributes
+  def initialize(genre, source, publish_date, on_spotify = 'true', *attributes)
+    author, label = *attributes
     super(genre, author, source, label, publish_date)
     @on_spotify = on_spotify
   end
