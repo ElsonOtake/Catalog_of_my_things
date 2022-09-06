@@ -12,6 +12,8 @@ class Main
     puts "#{netflix.id} netflix"
     puts "#{disney.id} disney"
     puts "#{apple.id} apple"
+    shawshank = add_movie(disney, 'Sep 02, 2002', false)
+    puts "#{shawshank.silent} #{shawshank.archived} #{shawshank.id} shawshank"
   end
 end
 
