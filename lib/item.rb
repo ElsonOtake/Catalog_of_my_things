@@ -8,7 +8,7 @@ class Item
     @label = label
     @publish_date = Date.parse(publish_date)
     @archived = false
-    @id = Random.rand(1..10000)
+    @id = Random.rand(1..10_000)
   end
 
   def move_to_archive
