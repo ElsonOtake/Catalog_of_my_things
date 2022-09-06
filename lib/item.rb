@@ -1,10 +1,10 @@
+require 'date'
+
 class Item
-  def initialize(genre, author, source, label, publish_date)
-    @genre = genre
-    @author = author
-    @source = source
-    @label = label
-    @publish_date = publish_date
+  attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archived
+
+  def initialize(publish_date)
+    @publish_date = Date.parse(publish_date)
     @archived = false
     @id = Random.rand(1..1000)
   end
@@ -13,13 +13,9 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  def label_setter(label)
-    @label = label
-  end
-
   private
 
   def can_be_archived?
-    @publish_date >= 10
+    ((DateTime.now - @publish_date) / 365.25).to_i >= 10
   end
 end
