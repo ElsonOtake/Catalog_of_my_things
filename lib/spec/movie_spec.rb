@@ -4,7 +4,7 @@ require 'date'
 describe Movie do
   before :each do
     @source = Source.new('Online shop')
-    @movie = Movie.new(@source, 'Sep 02, 2002', true)
+    @movie = Movie.new(@source, @source, @source, @source, 'Sep 02, 2002', true)
   end
 
   describe '#new' do
