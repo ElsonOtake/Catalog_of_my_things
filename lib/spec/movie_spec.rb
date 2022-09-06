@@ -32,7 +32,7 @@ describe Movie do
       expect(@movie.archived).to be_falsey
     end
 
-    it 'Has add the item to the items list of Source class' do
+    it 'Has 1 as number of item to the items list of Source class' do
       expect(@source.items.size).to be(1)
     end
   end
