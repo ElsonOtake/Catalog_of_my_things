@@ -1,7 +1,8 @@
-require './item'
+require './lib/item'
 
 class Genre
-  attr_reader :item
+  attr_reader :item, :name
+  attr_accessor :genre
 
   def initialize(name)
     super()
@@ -12,5 +13,6 @@ class Genre
 
   def add_item(item)
     @items << item
+    item.genre = self
   end
 end
