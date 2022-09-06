@@ -13,8 +13,6 @@ class Movie < Item
   private
 
   def can_be_archived?
-    super || @silent
-
-    false
+    super || @silent || false
   end
 end
