@@ -13,6 +13,10 @@ class Item
     @archived = true if can_be_archived?
   end
 
+  def author_setter(author)
+    @author = author
+  end
+
   def label_setter(label)
     @label = label
   end

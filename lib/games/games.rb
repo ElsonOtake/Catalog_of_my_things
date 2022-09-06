@@ -8,6 +8,7 @@ class Games
   private
 
   def can_be_archived?
-    ((DateTime.now - @publish_date) / 365.25).to_i >= 10
+    dif_time = Time.parse(DateTime.now) - Time.parse(@last_played_at)
+    ((DateTime.now - @publish_date) / 365.25).to_i >= 10 && dif_time > 2
   end
 end
