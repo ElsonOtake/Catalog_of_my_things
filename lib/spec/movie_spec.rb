@@ -3,8 +3,8 @@ require 'date'
 
 describe Movie do
   before :each do
-    source = Source.new('Online shop')
-    @movie = Movie.new(source, 'Sep 02, 2002', true)
+    @source = Source.new('Online shop')
+    @movie = Movie.new(@source, 'Sep 02, 2002', true)
   end
 
   describe '#new' do
@@ -22,6 +22,18 @@ describe Movie do
 
     it 'Has silent as true' do
       expect(@movie.silent).to be_truthy
+    end
+
+    it 'Has parent item id between 1 and 10000' do
+      expect(@movie.id).to be_between(1, 10_000).inclusive
+    end
+
+    it 'Has parent archived as false' do
+      expect(@movie.archived).to be_falsey
+    end
+
+    it 'Has add the item to the items list of Source class' do
+      expect(@source.items.size).to be(1)
     end
   end
 end
