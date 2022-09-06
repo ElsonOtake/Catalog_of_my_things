@@ -7,4 +7,9 @@ class Label
     @color = color
     @items = []
   end
+
+  def add_item(item)
+    @item.set_label(self)
+    @items << item unless @items.include?(item)
+  end
 end
