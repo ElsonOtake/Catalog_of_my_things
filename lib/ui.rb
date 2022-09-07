@@ -1,6 +1,6 @@
 require './check_input'
 
-class UiMovies
+class Ui
   include CheckInput
 
   def initialize(app)
@@ -10,6 +10,11 @@ class UiMovies
   def list_all_movies
     puts 'The movies list is empty!' if @app.list_movies.length.zero?
     @app.list_movies.each { |movie| puts "Publish date: \"#{movie.publish_date}\", Source: #{movie.source.name}" }
+  end
+
+  def list_all_sources
+    puts 'The sources list is empty!' if @app.list_sources.length.zero?
+    @app.list_sources.each { |source| puts "Name: \"#{source.name}\"" }
   end
 
   def select_source
