@@ -9,5 +9,6 @@ class Source
 
   def add_item(item)
     @items << item unless @items.include?(item)
+    item.source = self unless item.source.eql?(self)
   end
 end

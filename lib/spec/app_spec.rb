@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Create do
-  include Create
+describe App do
   before :each do
-    @source_added = add_source('Newspaper')
-    @movie_added = add_movie(@source_added, @source_added, @source_added, @source_added, 'Aug 30, 2022', false)
+    @app = App.new
+    @source_added = @app.add_source('Newspaper')
+    @movie_added = @app.add_movie('Aug 30, 2022', false, @source_added, @source_added, @source_added, @source_added)
   end
 
   describe '#new' do
