@@ -1,6 +1,8 @@
 require 'date'
 
 class Item
+  attr_accessor :genre, :source
+
   def initialize(genre, author, source, label, publish_date)
     @genre = genre
     @author = author
