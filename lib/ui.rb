@@ -56,7 +56,7 @@ class Ui
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
     silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
-    @app.add_movie(title, publish_date, silent, genre, author, @app.list_sources[@source.to_i], label)
+    @app.add_movie(title, publish_date, silent, genre, author, @app.list_sources[source.to_i], label)
     puts 'Movie created successfully'
   end
 end
