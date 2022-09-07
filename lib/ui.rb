@@ -11,7 +11,7 @@ class Ui
     puts "Movie list\n\n"
     puts 'The movies list is empty!' if @app.list_movies.length.zero?
     @app.list_movies.each do |movie|
-      puts "  Title:"
+      puts '  Title:'
       puts "  Publish date: #{movie.publish_date}"
       puts "  Genre: #{movie.source.name}"
       puts "  Author: #{movie.source.name}"
