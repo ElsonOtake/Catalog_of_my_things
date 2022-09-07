@@ -4,6 +4,7 @@ class Item
   attr_reader :genre, :author, :source, :label
 
   def initialize(publish_date)
+
     @publish_date = Date.parse(publish_date)
     @archived = false
     @id = Random.rand(1..10_000)
