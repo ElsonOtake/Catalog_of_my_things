@@ -72,6 +72,7 @@ class Main
   end
 end
 
+puts "\nWelcome to Catalog of my things App!"
 main = Main.new
 main.create_sources
 main.menu
