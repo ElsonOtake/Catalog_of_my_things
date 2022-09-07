@@ -3,12 +3,10 @@ require './item'
 class Movie < Item
   attr_reader :source, :publish_date, :archived, :id, :silent
 
-  # rubocop:disable Metrics/ParameterLists
-  def initialize(genre, author, source, label, publish_date, silent)
-    super(genre, author, source, label, publish_date)
+  def initialize(publish_date, silent)
+    super(publish_date)
     @silent = silent
   end
-  # rubocop:enable Metrics/ParameterLists
 
   private
 
