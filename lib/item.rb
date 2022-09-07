@@ -1,25 +1,37 @@
 require 'date'
 
 class Item
-  attr_accessor :genre, :source
+  attr_reader :genre, :author, :source, :label
 
-  def initialize(genre, author, source, label, publish_date)
-    @genre = genre
-    @author = author
-    @source = source
-    @label = label
+  def initialize(publish_date)
+
     @publish_date = Date.parse(publish_date)
     @archived = false
     @id = Random.rand(1..10_000)
   end
 
-  def move_to_archive
-    @archived = true if can_be_archived?
+  def genre=(genre)
+    @genre = genre unless @genre.eql?(genre)
+    @genre.add_item(self) unless @genre.items.include?(self)
   end
 
-  def add_source(source)
-    @source = source
-    source.items << self unless source.items.include?(self)
+  def author=(author)
+    @author = author unless @author.eql?(author)
+    @author.add_item(self) unless @author.items.include?(self)
+  end
+
+  def source=(source)
+    @source = source unless @source.eql?(source)
+    @source.add_item(self) unless @source.items.include?(self)
+  end
+
+  def label=(label)
+    @label = label unless @label.eql?(label)
+    @label.add_item(self) unless @label.items.include?(self)
+  end
+
+  def move_to_archive
+    @archived = true if can_be_archived?
   end
 
   private
