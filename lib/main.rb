@@ -1,9 +1,11 @@
-require '/app'
+require './app'
 require './movies_ui'
 require './sources_ui'
+require './check_input'
 
 class Main
-  include Create
+  include CheckInput
+
   def initialize
     @app = App.new
     @uimovies = UiMovies.new(@app)
@@ -13,8 +15,8 @@ class Main
 
   def menu_content
     options = ['Exit', 'List all books', 'List all music albums', 'List all movies', 'List of games',
-    'List all genres', 'List all labels', 'List all authors', 'List all sources', 'Add a book',
-    'Add a music album', 'Add a movie', 'Add a game']
+               'List all genres', 'List all labels', 'List all authors', 'List all sources',
+               'Add a book', 'Add a music album', 'Add a movie', 'Add a game']
     puts "\nPlease choose an option by entering a number:"
     options.each_with_index { |opt, idx| puts "#{idx} - #{opt}" }
   end
@@ -34,7 +36,6 @@ class Main
       when '11'
         @uimovies.add_a_movie
       else
-        writer
         puts "Thank you for using this app!\n"
         break
       end
