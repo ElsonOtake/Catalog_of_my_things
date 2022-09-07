@@ -9,7 +9,7 @@ class Author
   end
 
   def add_item(item)
-    item.author_setter(self)
+    item.author = self unless @items.include?(item)
     @items << item unless @items.include?(item)
   end
 end
