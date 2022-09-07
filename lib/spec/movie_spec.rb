@@ -5,7 +5,6 @@ describe Movie do
   before :each do
     @source = Source.new('Online shop')
     @movie = Movie.new('Sep 02, 2002', true)
-
   end
 
   describe '#new' do
