@@ -13,10 +13,11 @@ class Ui
     @app.list_movies.each do |movie|
       puts "  Title: #{movie.title}"
       puts "  Publish date: #{movie.publish_date}"
-      puts "  Genre: #{movie.source.name}"
-      puts "  Author: #{movie.source.name}"
+      puts "  Genre: #{movie.genre.name}"
+      puts "  Author: #{movie.author.first_name} #{movie.author.last_name}"
       puts "  Source: #{movie.source.name}"
-      puts "  Label: #{movie.source.name}"
+      puts "  Label Title: #{movie.label.title}"
+      puts "  Label Color: #{movie.label.color}"
       puts "  Silent: #{movie.silent}"
       puts "  Archived: #{movie.archived}"
       puts "  Id: #{movie.id}"
@@ -33,7 +34,7 @@ class Ui
   def select_source
     puts 'Select a source from the following list by number'
     @app.list_sources.each_with_index do |source, index|
-      puts "#{index}) Source: \"#{source.name}\""
+      puts "#{index}) \"#{source.name}\""
     end
   end
 
