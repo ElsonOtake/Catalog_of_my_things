@@ -1,7 +1,9 @@
 require './item'
 
-# rubocop:disable Metrics/ParameterLists
 class Movie < Item
+  attr_reader :source, :publish_date, :archived, :id, :silent
+
+  # rubocop:disable Metrics/ParameterLists
   def initialize(genre, author, source, label, publish_date, silent)
     super(genre, author, source, label, publish_date)
     @silent = silent
@@ -11,8 +13,6 @@ class Movie < Item
   private
 
   def can_be_archived?
-    return true if super || @silent
-
-    false
+    super || @silent || false
   end
 end
