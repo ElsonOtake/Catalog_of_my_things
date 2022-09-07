@@ -1,5 +1,4 @@
 class UiSources
-
   def initialize(app)
     @app = app
   end
