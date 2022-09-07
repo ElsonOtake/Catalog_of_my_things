@@ -12,14 +12,30 @@ class UiMovies
     @app.list_movies.each { |movie| puts "Publish date: \"#{movie.publish_date}\", Source: #{movie.source.name}" }
   end
 
+  def select_source
+    puts 'Select a source from the following list by number'
+    @app.list_sources.each_with_index do |source, index|
+      puts "#{index}) Source: \"#{source.name}\""
+    end
+  end
+
+  def list_source_option
+    select_source
+    list_size = @app.list_sources.length
+    @option = check_input('') { @option.match?(/^\d+$/) && (0..list_size - 1).any? { |a| a == @option.to_i } }
+  end
+
   def add_a_movie
+    puts 'The source list is empty!' if @app.list_sources.length.zero?
+    return if @app.list_sources.length.zero?
+
     @genre = ''
     @author = ''
-    @source = ''
+    @source = list_source_option
     @label = ''
     @publish_date = check_input('Publish date: ') { @option != '' }
     @silent = check_input('Silent: ') { @option != '' }
-    @app.add_movie(@publish_date, @silent, @genre, @author, @source, @label)
+    @app.add_movie(@publish_date, @silent, @genre, @author, @app.list_sources[@source.to_i], @label)
     puts 'Movie created successfully'
   end
 end
