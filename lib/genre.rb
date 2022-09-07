@@ -1,5 +1,3 @@
-require './item'
-
 class Genre
   attr_reader :item, :name
 
@@ -16,8 +14,8 @@ class Genre
   end
 
   def add_item(item)
-    @items << item
+    item.genre = self unless item.genre.eql?(self)
 
-    item.genre = self
+    @items << item unless @items.include?(item)
   end
 end
