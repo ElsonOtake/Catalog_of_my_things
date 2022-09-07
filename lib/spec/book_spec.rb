@@ -1,9 +1,12 @@
-require_relative '../../lib/books/book'
+require 'spec_helper'
+
 require 'date'
 
 describe Book do
   book = Book.new('andres', 'Good', 'May 15, 2020')
+
   book1 = Book.new('andres', 'bad', 'May 15, 2020')
+
   it 'book is an instance of Book class' do
     expect(book).to be_instance_of(Book)
   end
@@ -14,6 +17,7 @@ describe Book do
 
   it 'method works correctly' do
     expect(book.can_be_archived?).to eq(false)
+
     expect(book1.can_be_archived?).to eq(true)
   end
 end

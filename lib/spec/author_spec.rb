@@ -1,6 +1,5 @@
 require 'date'
-require '../author'
-require '../../lib/games/games'
+require 'spec_helper'
 
 describe Author do
   before do

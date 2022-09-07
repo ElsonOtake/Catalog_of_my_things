@@ -1,8 +1,6 @@
 require 'date'
 
-require_relative '../games/games'
-
-require_relative '../author'
+require 'spec_helper'
 
 describe Games do
   before do
@@ -19,7 +17,9 @@ describe Games do
     expect(@game.archived).to eq(false)
 
     @game2.move_to_archive
+
     expect(@game2.archived).to eq(true)
+
     # game2.move_to_archive = game2.archived = true
   end
 end
