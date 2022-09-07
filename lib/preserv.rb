@@ -7,8 +7,7 @@ module Preserv
     File.write('data/source.json', '', mode: 'w')
 
     @app.list_movies.each do |movie|
-      array_movie = [movie.title, movie.publish_date, movie.silent, movie.source.name, 
-                    movie.source.name, movie.source.name, movie.source.name]
+      array_movie = [movie.title, movie.publish_date, movie.silent, movie.source.name]
       json_movie = JSON.generate(array_movie)
       File.write('data/movie.json', "#{json_movie}\n", mode: 'a')
     end
@@ -26,9 +25,9 @@ module Preserv
     movies = []
     File.foreach('data/movie.json') do |line|
       movie = JSON.parse(line)
-      source = @app.list_sources.select { |src| src.name == movie[5] }
+      source = @app.list_sources.select { |src| src.name == movie[3] }
       movies << @app.add_movie(movie[0], movie[1], movie[2],
-                              source[0], source[0], source[0], source[0])
+                               source[0], source[0], source[0], source[0])
     end
     movies
   end
@@ -38,10 +37,10 @@ module Preserv
       File.open('data/source.json', 'w')
       return []
     end
-    source = []
+    sources = []
     File.foreach('data/source.json') do |line|
-      source << JSON.parse(line, create_additions: true)
+      sources << JSON.parse(line, create_additions: true)
     end
-    source
+    sources
   end
 end
