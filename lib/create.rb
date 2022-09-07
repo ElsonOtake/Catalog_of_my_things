@@ -6,7 +6,8 @@ module Create
     Source.new(name)
   end
 
-  def add_movie(_genre, _author, source, _label, publish_date, silent)
+  def add_movie(publish_date, silent, *param)
+    _genre, _author, source, _label = *param
     movie = Movie.new(publish_date, silent)
     movie.source = source
     movie
