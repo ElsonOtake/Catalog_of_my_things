@@ -11,7 +11,7 @@ class Ui
     puts "Movie list\n\n"
     puts 'The movies list is empty!' if @app.list_movies.length.zero?
     @app.list_movies.each do |movie|
-      puts '  Title:'
+      puts "  Title: #{movie.title}"
       puts "  Publish date: #{movie.publish_date}"
       puts "  Genre: #{movie.source.name}"
       puts "  Author: #{movie.source.name}"
@@ -47,15 +47,16 @@ class Ui
     puts 'The source list is empty!' if @app.list_sources.length.zero?
     return if @app.list_sources.length.zero?
 
-    @genre = ''
-    @author = ''
-    @source = list_source_option
-    @label = ''
-    @publish_date = check_input('Publish date: YYYY/MM/DD ') do
+    title = check_input('Title: ') { @option != '' }
+    genre = ''
+    author = ''
+    source = list_source_option
+    label = ''
+    publish_date = check_input('Publish date: YYYY/MM/DD ') do
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
-    @silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
-    @app.add_movie(@publish_date, @silent, @genre, @author, @app.list_sources[@source.to_i], @label)
+    silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
+    @app.add_movie(title, publish_date, silent, genre, author, @app.list_sources[@source.to_i], label)
     puts 'Movie created successfully'
   end
 end
