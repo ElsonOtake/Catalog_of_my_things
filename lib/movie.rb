@@ -1,10 +1,10 @@
 require './item'
 
 class Movie < Item
-  attr_reader :source, :publish_date, :archived, :id, :silent
+  attr_reader :title, :source, :publish_date, :archived, :id, :silent
 
-  def initialize(publish_date, silent)
-    super(publish_date)
+  def initialize(title, publish_date, silent)
+    super(title, publish_date)
     @silent = silent
   end
 
