@@ -11,15 +11,11 @@ class Item
     @publish_date = Date.parse(publish_date)
     @archived = false
     @id = Random.rand(1..10_000)
+    @source.add_item(self)
   end
 
   def move_to_archive
     @archived = true if can_be_archived?
-  end
-
-  def add_source(source)
-    @source = source
-    source.items << self unless source.items.include?(self)
   end
 
   private
