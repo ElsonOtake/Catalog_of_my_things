@@ -11,8 +11,8 @@ class Main
     @app = App.new
     @ui = Ui.new(@app)
     @option = ''
-    @app.list_of_movies = reader_movie
     @app.list_of_sources = reader_source
+    @app.list_of_movies = reader_movie
   end
 
   def menu_content
@@ -33,8 +33,8 @@ class Main
                 '3' => 'list_all_movies', '4' => 'list_all_movies',
                 '5' => 'list_all_sources', '6' => 'list_all_sources',
                 '7' => 'list_all_sources', '8' => 'list_all_sources',
-                '9' => 'add_a_movie', '10' => 'add_a_movie', '11' => 'add_a_movie', '12' => 'add_a_movie' }
-
+                '9' => 'add_a_movie', '10' => 'add_a_movie',
+                '11' => 'add_a_movie', '12' => 'add_a_movie' }
     loop do
       case @option = menu_option
       when '0'
@@ -46,19 +46,8 @@ class Main
       end
     end
   end
-
-  def create_sources
-    @app.add_source('From a friend')
-    @app.add_source('Online shop')
-    @app.add_source('Amazon Prime Video')
-    @app.add_source('Google Play')
-    @app.add_source('Vudu')
-    @app.add_source('Apple iTunes')
-    @app.add_source('YouTube')
-  end
 end
 
 puts "\nWelcome to Catalog of my things App!"
 main = Main.new
-main.create_sources
 main.menu
