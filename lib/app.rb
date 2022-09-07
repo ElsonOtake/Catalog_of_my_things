@@ -17,9 +17,9 @@ class App
     @list_of_sources
   end
 
-  def add_movie(publish_date, silent, *param)
+  def add_movie(title, publish_date, silent, *param)
     _genre, _author, source, _label = *param
-    movie = Movie.new(publish_date, silent)
+    movie = Movie.new(title, publish_date, silent)
     movie.genre = source
     movie.author = source
     movie.source = source
