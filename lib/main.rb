@@ -1,14 +1,18 @@
 require './app'
 require './ui'
 require './check_input'
+require './preserv'
 
 class Main
   include CheckInput
+  include Preserv
 
   def initialize
     @app = App.new
     @ui = Ui.new(@app)
     @option = ''
+    @app.list_of_movies = reader_movie
+    @app.list_of_sources = reader_source
   end
 
   def menu_content
@@ -34,6 +38,7 @@ class Main
     loop do
       case @option = menu_option
       when '0'
+        writer
         puts "Thank you for using this app!\n"
         break
       else
@@ -50,25 +55,6 @@ class Main
     @app.add_source('Vudu')
     @app.add_source('Apple iTunes')
     @app.add_source('YouTube')
-  end
-
-  def tests
-    hbo = add_source('HBO Max')
-    netflix = add_source('Netflix')
-    disney = add_source('Disney Plus')
-    apple = add_source('Apple TV')
-    puts "#{hbo.id} #{hbo.name} hbo"
-    puts "#{netflix.id} #{netflix.name} netflix"
-    puts "#{disney.id} #{disney.name} disney"
-    puts "#{apple.id} #{apple.name} apple"
-    shawshank = add_movie('Sep 02, 2002', false, disney, disney, disney, disney)
-    puts "#{shawshank.source.id} #{shawshank.silent} #{shawshank.archived} #{shawshank.id} shawshank"
-    shawshank.move_to_archive
-    puts "#{shawshank.source.id} #{shawshank.silent} #{shawshank.archived} #{shawshank.id} shawshank"
-    puts "#{disney.items.size} items"
-    tomatoes = add_movie('Oct 31, 2022', true, disney, disney, disney, disney)
-    puts "#{tomatoes.source.id} #{tomatoes.silent} #{tomatoes.archived} #{tomatoes.id} tomatoes"
-    puts "#{disney.items.size} items"
   end
 end
 
