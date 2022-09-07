@@ -1,6 +1,5 @@
 require './app'
-require './movies_ui'
-require './sources_ui'
+require './ui'
 require './check_input'
 
 class Main
@@ -8,8 +7,7 @@ class Main
 
   def initialize
     @app = App.new
-    @uimovies = UiMovies.new(@app)
-    @uisources = UiSources.new(@app)
+    @ui = Ui.new(@app)
     @option = ''
   end
 
@@ -30,11 +28,11 @@ class Main
     loop do
       case @option = menu_option
       when '3'
-        @uimovies.list_all_movies
+        @ui.list_all_movies
       when '8'
-        @uisources.list_all_sources
+        @ui.list_all_sources
       when '11'
-        @uimovies.add_a_movie
+        @ui.add_a_movie
       else
         puts "Thank you for using this app!\n"
         break
