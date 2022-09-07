@@ -1,6 +1,6 @@
-require 'movie'
+require_relative './movie'
 
-require 'source'
+require_relative './source'
 
 class App
   attr_writer :list_of_movies, :list_of_sources
