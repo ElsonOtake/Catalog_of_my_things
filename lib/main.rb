@@ -77,14 +77,14 @@ class Main
     @app.add_source('YouTube')
   end
 
-  def create_game
-    @app.add_game('From a friend')
-    @app.add_game('Online shop')
-    @app.add_game('Amazon Prime Video')
-    @app.add_game('Google Play')
-    @app.add_game('Vudu')
-    @app.add_game('Apple iTunes')
-    @app.add_game('YouTube')
+  def create_author
+    @app.add_author('Respawn')
+    @app.add_author('Riot')
+    @app.add_author('Ubisoft')
+    @app.add_author('Activision')
+    @app.add_author('Electronic Arts')
+    
+
   end
 end
 
@@ -93,5 +93,6 @@ puts "\nWelcome to Catalog of my things App!"
 main = Main.new
 
 main.create_sources
+main.create_game
 
 main.menu
