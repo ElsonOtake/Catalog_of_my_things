@@ -7,9 +7,9 @@ module Preserv
     File.write('data/source.json', '', mode: 'w')
 
     @app.list_movies.each do |movie|
-      array_movie = [movie.title, movie.publish_date, movie.silent, movie.genre.name, 
-                    movie.author.first_name, movie.author.last_name, movie.source.name,
-                    movie.label.title, movie.label.color ]
+      array_movie = [movie.title, movie.publish_date, movie.silent, movie.genre.name,
+                     movie.author.first_name, movie.author.last_name, movie.source.name,
+                     movie.label.title, movie.label.color]
       json_movie = JSON.generate(array_movie)
       File.write('data/movie.json', "#{json_movie}\n", mode: 'a')
     end
@@ -33,7 +33,7 @@ module Preserv
       # label = @app.list_labels.select { |lbl| lbl.title == movie[7] && lbl.color == movie[8] }
       movies << @app.add_movie(movie[0], movie[1], movie[2],
                                source[0], source[0], source[0], source[0])
-                              #  genre[0], author[0], source[0], label[0])
+      #  genre[0], author[0], source[0], label[0])
     end
     movies
   end
