@@ -63,6 +63,7 @@ class Ui
     puts "Music list\n\n"
     puts 'The music album list is empty!' if @app.list_music_albums.length.zero?
     @app.list_music_albums.each do |music_album|
+      puts "  Title: #{music_album.title}"
       puts "  Publish date: #{music_album.publish_date}"
       puts "  Genre: #{music_album.genre.name}"
       puts "  Author: #{music_album.genre.name}"
@@ -91,6 +92,7 @@ class Ui
   def list_genre_option
     select_genre
     list_size = @app.list_genres.length
+
     @option = check_input('') { @option.match?(/^\d+$/) && (0..list_size - 1).any? { |a| a == @option.to_i } }
   end
 
@@ -98,6 +100,7 @@ class Ui
     puts 'The list is empty!' if @app.list_sources.length.zero?
     return if @app.list_sources.length.zero?
 
+    @title = check_input('Title: ') { @option != '' }
     @genre = list_genre_option
     @author = ''
     @source = list_source_option
@@ -106,8 +109,8 @@ class Ui
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
     @on_spotify = check_input('Is it on Spotify: [true/false] ') { %w[true false].include?(@option.downcase) }
-    @app.add_music_album(@publish_date, @on_spotify, @app.list_genres[@genre.to_i], @author,
-                         @app.list_sources[@source.to_i], @label)
+    @app.add_music_album(@title, @publish_date, @on_spotify, @app.list_genres[@genre.to_i],
+                         @app.list_sources[@source.to_i], @author, @label)
     puts 'Music Album created successfully'
   end
 end
