@@ -1,9 +1,11 @@
 require 'date'
 
 class Item
-  attr_reader :genre, :author, :source, :label, :archived
+  attr_reader :genre, :author, :source, :label, :archived, :title
 
-  def initialize(publish_date)
+  def initialize(title, publish_date)
+    @title = title
+
     @publish_date = Date.parse(publish_date)
 
     @archived = false

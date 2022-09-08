@@ -36,7 +36,7 @@ class Main
   def menu
     methods = { '1' => 'list_all_movies', '2' => 'list_all_movies',
 
-                '3' => 'list_all_movies', '4' => 'list_all_movies',
+                '3' => 'list_all_movies', '4' => 'list_all_games',
 
                 '5' => 'list_all_sources', '6' => 'list_all_sources',
 
@@ -83,8 +83,6 @@ class Main
     @app.add_author('Ubisoft')
     @app.add_author('Activision')
     @app.add_author('Electronic Arts')
-    
-
   end
 end
 
@@ -93,6 +91,6 @@ puts "\nWelcome to Catalog of my things App!"
 main = Main.new
 
 main.create_sources
-main.create_game
+main.create_author
 
 main.menu

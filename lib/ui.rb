@@ -58,4 +58,18 @@ class Ui
     @app.add_movie(@publish_date, @silent, @genre, @author, @app.list_sources[@source.to_i], @label)
     puts 'Movie created successfully'
   end
+
+  def list_all_games
+    puts "Games list\n\n"
+    puts 'The games list is empty!' if @app.list_games.length.zero?
+    @app.list_games.each do |game|
+      puts '  Title:'
+      puts "  Publish date: #{game.publish_date}"
+      puts "  Genre: #{game.genre.name}"
+      puts "  Author: #{game.author.first_name}"
+      puts "  Label: #{game.label.title}"
+      puts "  Id: #{game.id}"
+      puts
+    end
+  end
 end

@@ -5,7 +5,7 @@ require 'source'
 require 'author'
 
 class App
-  attr_writer :list_of_movies, :list_of_sources, :list_of_games, list_of_authors
+  attr_writer :list_of_movies, :list_of_sources, :list_of_games, :list_of_authors
 
   def initialize
     @list_of_movies = []
@@ -51,10 +51,10 @@ class App
     movie
   end
 
-  def add_game(_title, publish_date, multiplayer, last_played_at, *param)
+  def add_game(title, publish_date, multiplayer, last_played_at, *param)
     _genre, author, source, _label = *param
 
-    game = Games.new(publish_date, multiplayer, last_played_at)
+    game = Games.new(title, publish_date, multiplayer, last_played_at)
 
     game.genre = source
 
@@ -62,13 +62,15 @@ class App
 
     game.source = source
 
+    game.label = label
+
     @list_of_games << game
 
     game
   end
 
-  def add_author(name)
-    author = Author.new(name)
+  def add_author(first_name, last_name = nil)
+    author = Author.new(first_name, last_name)
 
     @list_of_authors << author
 
