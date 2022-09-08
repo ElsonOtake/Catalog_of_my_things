@@ -92,7 +92,7 @@ class Ui
 
   def add_a_movie
     check_empty
-    return if @app.list_genres.length.zero? || @app.list_authors.length.zero? || 
+    return if @app.list_genres.length.zero? || @app.list_authors.length.zero? ||
               @app.list_sources.length.zero? || @app.list_labels.length.zero?
 
     title = check_input('Title: ') { @option != '' }
@@ -105,8 +105,8 @@ class Ui
     end
     silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
     @app.add_movie(title, publish_date, silent, @app.list_genres[genre.to_i],
-                  @app.list_authors[author.to_i], @app.list_sources[source.to_i],
-                  @app.list_labels[label.to_i])
+                   @app.list_authors[author.to_i], @app.list_sources[source.to_i],
+                   @app.list_labels[label.to_i])
     puts 'Movie created successfully'
   end
 end
