@@ -37,6 +37,20 @@ class App
     movie
   end
 
+  def add_game(publish_date, multiplayer, last_played_at)
+    game = Games.new(publish_date, multiplayer, last_played_at)
+
+    game.publish_date = publish_date
+
+    game.multiplayer = multiplayer
+
+    game.last_played_at = last_played_at
+
+    @list_of_games << game
+
+    game
+  end
+
   def add_source(name)
     source = Source.new(name)
 
