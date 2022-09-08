@@ -11,4 +11,15 @@ class Source
     @items << item unless @items.include?(item)
     item.source = self unless item.source.eql?(self)
   end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'a' => [name]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(*object['a'])
+  end
 end

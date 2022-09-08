@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Label do
   label = Label.new('title', 'red')
 
-  item = Item.new('May 15, 2020')
+  item = Item.new('Title', 'May 15, 2020')
 
   label.add_item(item)
 

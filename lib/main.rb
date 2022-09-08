@@ -1,11 +1,12 @@
-require_relative './app'
 
-require_relative './ui'
-
-require 'check_input'
+require './app'
+require './ui'
+require './check_input'
+require './preserv'
 
 class Main
   include CheckInput
+  include Preserv
 
   def initialize
     @app = App.new
@@ -13,6 +14,10 @@ class Main
     @ui = Ui.new(@app)
 
     @option = ''
+    @app.list_of_sources = reader_source
+    @app.list_of_movies = reader_movie
+    @app.list_of_genres = reader_genre
+    @app.list_of_music_albums = reader_music
   end
 
   def menu_content
@@ -33,22 +38,26 @@ class Main
     @option = check_input('') { %w[0 1 2 3 4 5 6 7 8 9 10 11 12].include?(@option) }
   end
 
+  def create_label
+    @app.create_label('Gift', 'blue')
+    @app.create_label('New', 'red')
+    @app.create_label('recently earned', 'brown')
+    @app.create_label('Old', 'green')
+    @app.create_label('From a friend', 'black')
+  end
+
   def menu
-    methods = { '1' => 'list_all_movies', '2' => 'list_all_movies',
-
+    methods = { '1' => 'list_all_movies', '2' => 'list_all_music_albums',
                 '3' => 'list_all_movies', '4' => 'list_all_games',
-
-                '5' => 'list_all_sources', '6' => 'list_all_sources',
-
+                '5' => 'list_all_genre', '6' => 'list_all_sources',
                 '7' => 'list_all_sources', '8' => 'list_all_sources',
-
-                '9' => 'add_a_movie', '10' => 'add_a_movie', '11' => 'add_a_movie', '12' => 'add_a_movie' }
+                '9' => 'add_a_movie', '10' => 'add_a_music_album', '11' => 'add_a_movie', '12' => 'add_a_movie' }
 
     loop do
       case @option = menu_option
 
       when '0'
-
+        music_writer
         puts "Thank you for using this app!\n"
 
         break
@@ -59,22 +68,6 @@ class Main
 
       end
     end
-  end
-
-  def create_sources
-    @app.add_source('From a friend')
-
-    @app.add_source('Online shop')
-
-    @app.add_source('Amazon Prime Video')
-
-    @app.add_source('Google Play')
-
-    @app.add_source('Vudu')
-
-    @app.add_source('Apple iTunes')
-
-    @app.add_source('YouTube')
   end
 
   def create_author
@@ -89,8 +82,6 @@ end
 puts "\nWelcome to Catalog of my things App!"
 
 main = Main.new
-
-main.create_sources
 main.create_author
-
+main.create_label
 main.menu

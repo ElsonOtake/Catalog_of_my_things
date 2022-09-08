@@ -5,7 +5,7 @@ require 'date'
 describe MusicAlbum do
   context 'with valid input' do
     before(:each) do
-      @new_music_album = MusicAlbum.new(true, '2019-01-01')
+      @new_music_album = MusicAlbum.new('title', true, '2019-01-01')
 
       @new_music_album.genre = 'Rock'
 
