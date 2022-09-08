@@ -5,7 +5,6 @@ require 'spec_helper'
 describe Games do
   before do
     @game = Games.new('title', '2015-12-24', true, '2019-08-17')
-
     @game2 = Games.new('title', '2007-07-06', false, '2015-12-01')
   end
 
