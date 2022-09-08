@@ -1,4 +1,4 @@
-require './item'
+require_relative './item'
 
 class Movie < Item
   attr_reader :title, :genre, :author, :source, :label, :publish_date, :archived, :id, :silent

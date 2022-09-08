@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 require 'date'
 
 describe Movie do
@@ -14,6 +15,7 @@ describe Movie do
 
     it 'Has source as instance of Source class' do
       @movie.source = @source
+
       expect(@movie.source).to be_instance_of Source
     end
 
@@ -43,11 +45,13 @@ describe Movie do
 
     it 'Has parent archived as false' do
       @movie.move_to_archive
+
       expect(@movie.archived).to be_truthy
     end
 
     it 'Has 1 as number of item to the items list of Source class' do
       @movie.source = @source
+
       expect(@source.items.size).to be(1)
     end
   end
