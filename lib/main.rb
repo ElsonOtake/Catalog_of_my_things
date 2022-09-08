@@ -1,14 +1,19 @@
 require './app'
 require './ui'
 require './check_input'
+require './preserv'
 
 class Main
   include CheckInput
+  include Preserv
 
   def initialize
     @app = App.new
     @ui = Ui.new(@app)
     @option = ''
+    @app.list_of_sources = reader_source
+    @app.list_of_genres = reader_genre
+    @app.list_of_music_albums = reader_music
   end
 
   def menu_content
@@ -34,6 +39,7 @@ class Main
     loop do
       case @option = menu_option
       when '0'
+        music_writer
         puts "Thank you for using this app!\n"
         break
       else
@@ -41,32 +47,8 @@ class Main
       end
     end
   end
-
-  def create_sources
-    @app.add_source('From a friend')
-    @app.add_source('Online shop')
-    @app.add_source('Amazon Prime Video')
-    @app.add_source('Google Play')
-    @app.add_source('Vudu')
-    @app.add_source('Apple iTunes')
-    @app.add_source('YouTube')
-    @app.add_source('Spotify')
-  end
-
-  def create_genres
-    @app.add_genre('Rock')
-    @app.add_genre('Pop')
-    @app.add_genre('Hip Hop')
-    @app.add_genre('EDM')
-    @app.add_genre('Techno')
-    @app.add_genre('Classic')
-    @app.add_genre('Reggeton')
-    @app.add_genre('Slow Jams')
-  end
 end
 
 puts "\nWelcome to Catalog of my things App!"
 main = Main.new
-main.create_sources
-main.create_genres
 main.menu

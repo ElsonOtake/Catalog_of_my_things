@@ -4,7 +4,7 @@ require_relative './genre'
 require_relative './music_album'
 
 class App
-  attr_writer :list_of_movies, :list_of_sources
+  attr_writer :list_of_movies, :list_of_sources, :list_of_music_albums, :list_of_genres
 
   def initialize
     @list_of_movies = []
@@ -47,10 +47,10 @@ class App
     movie
   end
 
-  def add_music_album(publish_date, on_spotify, *param)
-    genre, _author, source, _label = *param
+  def add_music_album(title, publish_date, on_spotify, *param)
+    genre, source, _author, _label = *param
 
-    music_album = MusicAlbum.new(publish_date, on_spotify)
+    music_album = MusicAlbum.new(title, publish_date, on_spotify)
 
     music_album.genre = genre
 
