@@ -25,11 +25,11 @@ class Main
   end
 
   def menu
-    methods = { '1' => 'list_all_movies', '2' => 'list_all_movies',
+    methods = { '1' => 'list_all_movies', '2' => 'list_all_music_albums',
                 '3' => 'list_all_movies', '4' => 'list_all_movies',
-                '5' => 'list_all_sources', '6' => 'list_all_sources',
+                '5' => 'list_all_genre', '6' => 'list_all_sources',
                 '7' => 'list_all_sources', '8' => 'list_all_sources',
-                '9' => 'add_a_movie', '10' => 'add_a_movie', '11' => 'add_a_movie', '12' => 'add_a_movie' }
+                '9' => 'add_a_movie', '10' => 'add_a_music_album', '11' => 'add_a_movie', '12' => 'add_a_movie' }
 
     loop do
       case @option = menu_option
@@ -50,10 +50,23 @@ class Main
     @app.add_source('Vudu')
     @app.add_source('Apple iTunes')
     @app.add_source('YouTube')
+    @app.add_source('Spotify')
+  end
+
+  def create_genres
+    @app.add_genre('Rock')
+    @app.add_genre('Pop')
+    @app.add_genre('Hip Hop')
+    @app.add_genre('EDM')
+    @app.add_genre('Techno')
+    @app.add_genre('Classic')
+    @app.add_genre('Reggeton')
+    @app.add_genre('Slow Jams')
   end
 end
 
 puts "\nWelcome to Catalog of my things App!"
 main = Main.new
 main.create_sources
+main.create_genres
 main.menu

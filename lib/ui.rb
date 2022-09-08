@@ -58,4 +58,56 @@ class Ui
     @app.add_movie(@publish_date, @silent, @genre, @author, @app.list_sources[@source.to_i], @label)
     puts 'Movie created successfully'
   end
+
+  def list_all_music_albums
+    puts "Music list\n\n"
+    puts 'The music album list is empty!' if @app.list_music_albums.length.zero?
+    @app.list_music_albums.each do |music_album|
+      puts "  Publish date: #{music_album.publish_date}"
+      puts "  Genre: #{music_album.genre.name}"
+      puts "  Author: #{music_album.genre.name}"
+      puts "  Source: #{music_album.source.name}"
+      puts "  Label: #{music_album.genre.name} #{music_album.genre.name}"
+      puts "  On Spotify: #{music_album.on_spotify}"
+      puts "  Archived: #{music_album.archived}"
+      puts "  Id: #{music_album.id}"
+      puts
+    end
+  end
+
+  def list_all_genre
+    puts "Genre list\n\n"
+    puts 'The Genre list is empty!' if @app.list_genres.length.zero?
+    @app.list_genres.each { |genre| puts "  #{genre.name}" }
+  end
+
+  def select_genre
+    puts 'Select a genre from the following list by number'
+    @app.list_genres.each_with_index do |genre, index|
+      puts "#{index}) Genre: \"#{genre.name}\""
+    end
+  end
+
+  def list_genre_option
+    select_genre
+    list_size = @app.list_genres.length
+    @option = check_input('') { @option.match?(/^\d+$/) && (0..list_size - 1).any? { |a| a == @option.to_i } }
+  end
+
+  def add_a_music_album
+    puts 'The list is empty!' if @app.list_sources.length.zero?
+    return if @app.list_sources.length.zero?
+
+    @genre = list_genre_option
+    @author = ''
+    @source = list_source_option
+    @label = ''
+    @publish_date = check_input('Publish date: YYYY/MM/DD ') do
+      @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
+    end
+    @on_spotify = check_input('Is it on Spotify: [true/false] ') { %w[true false].include?(@option.downcase) }
+    @app.add_music_album(@publish_date, @on_spotify, @app.list_genres[@genre.to_i], @author,
+                         @app.list_sources[@source.to_i], @label)
+    puts 'Music Album created successfully'
+  end
 end
