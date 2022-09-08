@@ -58,9 +58,9 @@ class App
     source
   end
 
-  def add_book(publisher, cover_state, publish_date, *param)
+  def add_book(title, publisher, cover_state, publish_date, *param)
     genre, author, source, label = *param
-    book = Book.new(publisher, cover_state, publish_date)
+    book = Book.new(title, publisher, cover_state, publish_date)
     book.genre = genre
     book.author = author
     book.source = source

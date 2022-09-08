@@ -3,17 +3,15 @@ require 'date'
 class Item
   attr_reader :genre, :author, :source, :label, :archived
 
-  def initialize(publish_date)
+  def initialize(title, publish_date)
     @publish_date = Date.parse(publish_date)
-
+    @title = title
     @archived = false
-
     @id = Random.rand(1..10_000)
   end
 
   def genre=(genre)
     @genre = genre unless @genre.eql?(genre)
-
     @genre.add_item(self) unless @genre.items.include?(self)
   end
 

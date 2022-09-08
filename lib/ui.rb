@@ -28,7 +28,7 @@ class Ui
     puts "Books list\n\n"
     puts 'The book list is empty!' if @app.list_books.length.zero?
     @app.list_books.each do |book|
-      puts '  Title:'
+      puts "  Title: #{book.title}"
       puts "  Publish date: #{book.publish_date}"
       puts "  Genre: #{book.genre.name}"
       puts "  Author: #{book.author.first_name} #{book.author.last_name}"
@@ -121,6 +121,7 @@ class Ui
   end
 
   def add_a_book
+    title = check_input('Title: ') { @option != '' }
     genre = list_genres_option
     author = list_authors_option
     source = list_source_option
@@ -132,7 +133,7 @@ class Ui
     publisher = gets.chomp
     puts 'please enter the cover state [good/bad]'
     cover_state = gets.chomp
-    @app.add_book(publisher, cover_state, publish_date, genre, author, source, label)
+    @app.add_book(title, publisher, cover_state, publish_date, genre, author, source, label)
     puts 'Book created successfully'
   end
 end
