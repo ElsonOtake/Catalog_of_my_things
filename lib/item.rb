@@ -5,11 +5,8 @@ class Item
 
   def initialize(title, publish_date)
     @title = title
-
     @publish_date = Date.parse(publish_date)
-
     @archived = false
-
     @id = Random.rand(1..10_000)
   end
 

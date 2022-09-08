@@ -1,5 +1,19 @@
 CREATE DATABASE catalog_of_my_things;
 
+CREATE TABLE label(
+  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR(100),
+  color VARCHAR(100)
+);
+
+CREATE TABLE book(
+  id integer REFERENCES item(id),
+  publish_date DATE,
+  publisher VARCHAR(100),
+  cover_state VARCHAR(10),
+  label_id INT
+);
+
 CREATE TABLE item (
   id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title varchar(100) NOT NULL,
@@ -42,3 +56,4 @@ CREATE TABLE genre (
   id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name varchar(100) NOT NULL
 ); 
+

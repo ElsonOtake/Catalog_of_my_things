@@ -12,6 +12,7 @@ class Main
     @ui = Ui.new(@app)
     @option = ''
     @app.list_of_sources = reader_source
+    @app.list_of_movies = reader_movie
     @app.list_of_genres = reader_genre
     @app.list_of_music_albums = reader_music
   end
@@ -27,6 +28,14 @@ class Main
   def menu_option
     menu_content
     @option = check_input('') { %w[0 1 2 3 4 5 6 7 8 9 10 11 12].include?(@option) }
+  end
+
+  def create_label
+    @app.create_label('Gift', 'blue')
+    @app.create_label('New', 'red')
+    @app.create_label('recently earned', 'brown')
+    @app.create_label('Old', 'green')
+    @app.create_label('From a friend', 'black')
   end
 
   def menu
@@ -51,4 +60,5 @@ end
 
 puts "\nWelcome to Catalog of my things App!"
 main = Main.new
+main.create_label
 main.menu

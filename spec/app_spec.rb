@@ -6,7 +6,8 @@ describe App do
 
     @source_added = @app.add_source('Newspaper')
 
-    @movie_added = @app.add_movie('Aug 30, 2022', false, @source_added, @source_added, @source_added, @source_added)
+    @movie_added = @app.add_movie('Driving Miss Daisy', 'Aug 30, 2022', false, @source_added, @source_added,
+                                  @source_added, @source_added)
   end
 
   describe '#new' do
