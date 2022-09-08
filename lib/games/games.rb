@@ -1,6 +1,7 @@
 require_relative '../item'
 
 class Games < Item
+
   def initialize(title, publish_date, multiplayer, last_played_at)
     super(title, publish_date)
 
@@ -17,7 +18,3 @@ class Games < Item
     super && dif_time > 2
   end
 end
-
-# games = Games.new('2000-02-02', true, '2010-01-01')
-
-# p games
