@@ -15,7 +15,6 @@ class Main
     @app.list_of_movies = reader_movie
     @app.list_of_genres = reader_genre
     @app.list_of_music_albums = reader_music
-
   end
 
   def menu_content

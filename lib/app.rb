@@ -37,14 +37,6 @@ class App
     @list_of_genres
   end
 
-  def list_music_albums
-    @list_of_music_albums
-  end
-
-  def list_genres
-    @list_of_genres
-  end
-
   def add_movie(publish_date, silent, *param)
     _genre, _author, source, _label = *param
     movie = Movie.new(publish_date, silent)
@@ -58,19 +50,12 @@ class App
 
   def add_music_album(title, publish_date, on_spotify, *param)
     genre, source, _author, _label = *param
-
     music_album = MusicAlbum.new(title, publish_date, on_spotify)
-
     music_album.genre = genre
-
     music_album.author = genre
-
     music_album.source = source
-
     music_album.label = genre
-
     @list_of_music_albums << music_album
-
     music_album
   end
 
@@ -91,21 +76,11 @@ class App
     book
   end
 
-  def add_music_album(publish_date, on_spotify, *param)
-    genre, _author, source, _label = *param
-    music_album = MusicAlbum.new(publish_date, on_spotify)
-    music_album.genre = genre
-    music_album.author = genre
-    music_album.source = source
-    music_album.label = genre
-    @list_of_music_albums << music_album
-    music_album
-  end
-
   def add_label(title, color)
     label = Label.new(title, color)
     @list_of_labels << label
     label
+  end
 
   def add_genre(name)
     genre = Genre.new(name)

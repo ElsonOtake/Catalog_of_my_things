@@ -46,6 +46,7 @@ module Preserv
       labels << JSON.parse(line, create_additions: true)
     end
     labels
+  end
 
   def music_writer
     File.write('data/music_album.json', '', mode: 'w')
