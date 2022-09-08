@@ -5,86 +5,125 @@ class Ui
 
   def initialize(app)
     @app = app
+    @title = ''
+    @publish_date = ''
+    @genre = ''
+    @author = ''
+    @source = ''
+    @label = ''
+    @item = %w[genre author source label]
   end
 
-  def list_all_movies
-    puts "Movie list\n\n"
-
-    puts 'The movies list is empty!' if @app.list_movies.length.zero?
-
-    @app.list_movies.each do |movie|
-      puts "  Title: #{movie.title}"
-      puts "  Publish date: #{movie.publish_date}"
-      puts "  Genre: #{movie.genre.name}"
-      puts "  Author: #{movie.author.first_name} #{movie.author.last_name}"
-      puts "  Source: #{movie.source.name}"
-      puts "  Label Title: #{movie.label.title}"
-      puts "  Label Color: #{movie.label.color}"
-      puts "  Silent: #{movie.silent}"
-
-      puts "  Archived: #{movie.archived}"
-
-      puts "  Id: #{movie.id}"
-
-      puts
+  def array_name(class_name)
+    case class_name
+    # when 'genre'
+    # @app.list_genres
+    # when 'author'
+    # @app.list_authors
+    when 'source'
+      @app.list_sources
+      # when 'label'
+      # @app.list_labels
     end
   end
 
-  def list_all_bokks
-    puts "Books list\n\n"
-    puts 'The book list is empty!' if @app.list_books.length.zero?
-    @app.list_books.each do |book|
-      puts "  Title: #{book.title}"
-      puts "  Publish date: #{book.publish_date}"
-      puts "  Genre: #{book.genre.name}"
-      puts "  Author: #{book.author.first_name} #{book.author.last_name}"
-      puts "  Source: #{book.source.name}"
-      puts "  Label title: #{book.label.title} label color: #{book.label.color}"
-      puts "  Cover state: #{book.cover_state}"
-      puts " Id: #{book.id}"
+  def array_things_name(class_name)
+    case class_name
+    when 'game'
+      @app.list_games
+    when 'movie'
+      @app.list_movies
+    when 'book'
+      @app.list_books
+    when 'music album'
+      @app.list_music_albums
+    end
+  end
+
+  def list_all_movies
+    list_all_things('movie')
+  end
+
+  def list_extra_things(class_name, data)
+    case class_name
+    when 'book'
+      puts "  Publisher: #{data.publisher}"
+      puts "  Cover State: #{data.cover_state}"
+    when 'music album'
+      puts "  On Spotify: #{data.on_spotify}"
+    when 'movie'
+      puts "  Silent: #{data.silent}"
+    when 'game'
+      puts "  Multiplayer: #{data.multiplayer}"
+      puts "  Last Played at: #{data.last_played_at}"
+    end
+  end
+
+  def list_all_items(data)
+    puts "  Id: #{data.id}"
+    puts "  Title: #{data.title}"
+    puts "  Publish date: #{data.publish_date}"
+    puts "  Archived: #{data.archived}"
+    # puts "  Genre: #{data.genre.name}"
+    # puts "  Author: #{data.author.first_name} #{data.author.last_name}"
+    puts "  Source: #{data.source.name}"
+    # puts "  Label: #{data.label.title} #{data.label.color}"
+  end
+
+  def list_all_things(class_name)
+    puts "#{class_name.capitalize} list\n\n"
+    puts "The #{class_name}s list is empty!" if array_things_name(class_name).size.zero?
+    array_things_name(class_name).each do |data|
+      list_all_items(data)
+      list_extra_things(class_name, data)
       puts
     end
   end
 
   def list_all_sources
     puts "Source list\n\n"
-
-    puts 'The sources list is empty!' if @app.list_sources.length.zero?
-
+    puts 'The sources list is empty!' if @app.list_sources.size.zero?
     @app.list_sources.each { |source| puts "  #{source.name}" }
   end
 
-  def select_source
-    puts 'Select a source from the following list by number'
-
-    @app.list_sources.each_with_index do |source, index|
-      puts "#{index}) \"#{source.name}\""
+  def select_option(class_name)
+    puts "Select a #{class_name} from the following list by number"
+    array_name(class_name).each_with_index do |data, index|
+      puts "#{index}) #{data.name}"
     end
   end
 
-  def list_source_option
-    select_source
-
-    list_size = @app.list_sources.length
-
+  def list_option(class_name)
+    select_option(class_name)
+    list_size = array_name(class_name).size
     @option = check_input('') { @option.match?(/^\d+$/) && (0..list_size - 1).any? { |a| a == @option.to_i } }
   end
 
-  def add_a_movie
-    puts 'The source list is empty!' if @app.list_sources.length.zero?
+  def empty_list?
+    @item.each { |data| puts "The #{data} list is empty!" if array_name(data).size.zero? }
+  end
 
-    return if @app.list_sources.length.zero?
-
-    title = check_input('Title: ') { @option != '' }
-    genre = ''
-    author = ''
-    source = list_source_option
-    label = ''
-    publish_date = check_input('Publish date: YYYY/MM/DD ') do
+  def input_item_data
+    @title = check_input('Title: ') { @option != '' }
+    # @genre = list_option('genre')
+    # @author = list_option('author')
+    @source = list_option('source')
+    # @label = list_option('label')
+    @publish_date = check_input('Publish date: YYYY/MM/DD ') do
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
+  end
+
+  def add_a_movie
+    empty_list?
+    return if @item.any? { |data| array_name(data).size.zero? }
+
+    input_item_data
     silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
-    @app.add_movie(title, publish_date, silent, genre, author, @app.list_sources[source.to_i], label)
+    @app.add_movie(@title, @publish_date, silent, @genre, @author, @app.list_sources[@source.to_i], @label)
+    # @app.add_movie(@title, @publish_date, silent, @app.list_genres[@genre.to_i],
+    #                @app.list_authors[@author.to_i], @app.list_sources[@source.to_i],
+    #                @app.list_labels[@label.to_i])
     puts 'Movie created successfully'
   end
 

@@ -12,25 +12,21 @@ class Item
 
   def genre=(genre)
     @genre = genre unless @genre.eql?(genre)
-
     @genre.add_item(self) unless @genre.items.include?(self)
   end
 
   def author=(author)
     @author = author unless @author.eql?(author)
-
     @author.add_item(self) unless @author.items.include?(self)
   end
 
   def source=(source)
     @source = source unless @source.eql?(source)
-
     @source.add_item(self) unless @source.items.include?(self)
   end
 
   def label=(label)
     @label = label unless @label.eql?(label)
-
     @label.add_item(self) unless @label.items.include?(self)
   end
 

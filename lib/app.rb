@@ -1,12 +1,9 @@
 require_relative './movie'
 require_relative './source'
-
 require_relative './books/book'
 require_relative './label'
-
 require_relative './genre'
 require_relative './music_album'
-
 require 'author'
 
 class App
@@ -15,16 +12,11 @@ class App
 
   def initialize
     @list_of_movies = []
-
     @list_of_games = []
-
     @list_of_authors = []
-
     @list_of_sources = []
-
     @list_of_books = []
     @list_of_labels = []
-
     @list_of_music_albums = []
     @list_of_genres = []
   end
@@ -36,7 +28,6 @@ class App
   def list_sources
     @list_of_sources
   end
-
 
   def list_games
     @list_of_games
@@ -67,27 +58,18 @@ class App
 
   def add_game(title, publish_date, multiplayer, last_played_at, *param)
     _genre, author, source, _label = *param
-
     game = Games.new(title, publish_date, multiplayer, last_played_at)
-
     game.genre = source
-
     game.author = author
-
     game.source = source
-
     game.label = label
-
     @list_of_games << game
-
     game
   end
 
   def add_author(first_name, last_name = nil)
     author = Author.new(first_name, last_name)
-
     @list_of_authors << author
-
     author
   end
 
@@ -127,9 +109,7 @@ class App
 
   def add_genre(name)
     genre = Genre.new(name)
-
     @list_of_genres << genre
-
     genre
   end
 end
