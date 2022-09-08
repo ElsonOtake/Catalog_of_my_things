@@ -1,9 +1,11 @@
 require './app'
 require './ui'
 require './check_input'
+require './preserv'
 
 class Main
   include CheckInput
+  include Preserv
 
   def initialize
     @app = App.new
@@ -35,6 +37,7 @@ class Main
       case @option = menu_option
       when '0'
         puts "Thank you for using this app!\n"
+        book_label_writer
         break
       else
         @ui.send(methods[@option])
