@@ -28,7 +28,7 @@ describe App do
     it 'movie_added has publish date as August 30, 2022' do
       expect(@movie_added.publish_date).to eq(Date.parse('Aug 30, 2022'))
     end
-    
+
     it 'movie_added has silent as false' do
       expect(@movie_added.silent).to be_falsey
     end
