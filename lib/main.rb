@@ -13,6 +13,9 @@ class Main
     @option = ''
     @app.list_of_sources = reader_source
     @app.list_of_movies = reader_movie
+    @app.list_of_genres = reader_genre
+    @app.list_of_music_albums = reader_music
+
   end
 
   def menu_content
@@ -37,16 +40,16 @@ class Main
   end
 
   def menu
-    methods = { '1' => 'list_all_movies', '2' => 'list_all_movies',
+    methods = { '1' => 'list_all_movies', '2' => 'list_all_music_albums',
                 '3' => 'list_all_movies', '4' => 'list_all_movies',
-                '5' => 'list_all_sources', '6' => 'list_all_sources',
+                '5' => 'list_all_genre', '6' => 'list_all_sources',
                 '7' => 'list_all_sources', '8' => 'list_all_sources',
-                '9' => 'add_a_movie', '10' => 'add_a_movie',
-                '11' => 'add_a_movie', '12' => 'add_a_movie' }
+                '9' => 'add_a_movie', '10' => 'add_a_music_album', '11' => 'add_a_movie', '12' => 'add_a_movie' }
+
     loop do
       case @option = menu_option
       when '0'
-        writer
+        music_writer
         puts "Thank you for using this app!\n"
         break
       else
