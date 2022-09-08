@@ -4,9 +4,9 @@ require 'spec_helper'
 
 describe Games do
   before do
-    @game = Games.new('2015-12-24', true, '2019-08-17')
+    @game = Games.new('Title', '2015-12-24', true, '2019-08-17')
 
-    @game2 = Games.new('2007-07-06', false, '2015-12-01')
+    @game2 = Games.new('Title', '2007-07-06', false, '2015-12-01')
   end
 
   it 'creates a new game' do
