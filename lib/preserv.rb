@@ -35,6 +35,7 @@ module Preserv
     end
     games
   end
+
   def book_label_writer
     File.write('data/book.json', '', mode: 'w')
     File.write('data/label.json', '', mode: 'w')
@@ -129,6 +130,7 @@ module Preserv
     end
     sources
   end
+
   def reader_genre
     unless File.exist?('data/genre.json')
       File.open('data/genre.json', 'w')

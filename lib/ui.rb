@@ -99,7 +99,6 @@ class Ui
     puts 'Movie created successfully'
   end
 
-
   def list_all_games
     puts "Games list\n\n"
 
@@ -117,6 +116,7 @@ class Ui
       puts "  Label: #{game.label.title}"
 
       puts "  Id: #{game.id}"
+    end
   end
 
   def list_all_music_albums
@@ -135,7 +135,6 @@ class Ui
       puts
     end
   end
-
 
   def add_a_game
     puts 'The game list is empty!' if @app.list_sources.length.zero?
@@ -158,6 +157,7 @@ class Ui
 
     puts 'Games created successfully'
   end
+
   def list_all_genre
     puts "Genre list\n\n"
     puts 'The Genre list is empty!' if @app.list_genres.length.zero?

@@ -1,4 +1,3 @@
-
 require './app'
 require './ui'
 require './check_input'

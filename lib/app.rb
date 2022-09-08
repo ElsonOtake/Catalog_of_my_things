@@ -10,8 +10,8 @@ require_relative './music_album'
 require 'author'
 
 class App
-
-  attr_writer :list_of_movies, :list_of_sources, :list_of_games, :list_of_authors, :list_of_music_albums, :list_of_genres
+  attr_writer :list_of_movies, :list_of_sources, :list_of_games, :list_of_authors, :list_of_music_albums,
+              :list_of_genres
 
   def initialize
     @list_of_movies = []
@@ -43,6 +43,7 @@ class App
 
   def list_authors
     @list_of_authors
+  end
 
   def list_music_albums
     @list_of_music_albums
@@ -50,7 +51,6 @@ class App
 
   def list_genres
     @list_of_genres
-
   end
 
   def add_movie(publish_date, silent, *param)
@@ -89,6 +89,7 @@ class App
 
     author
   end
+
   def add_music_album(title, publish_date, on_spotify, *param)
     genre, source, _author, _label = *param
     music_album = MusicAlbum.new(title, publish_date, on_spotify)
