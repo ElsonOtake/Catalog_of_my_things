@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Author do
   before do
     @author = Author.new('Mauricio', 'Cantillo')
-    @item = Item.new('Title', 'May 15, 2020')
+    @item = Item.new('title', 'May 15, 2020')
   end
 
   it 'should create a new author' do

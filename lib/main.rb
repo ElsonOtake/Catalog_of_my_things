@@ -50,21 +50,18 @@ class Main
                 '3' => 'list_all_movies', '4' => 'list_all_games',
                 '5' => 'list_all_genre', '6' => 'list_all_sources',
                 '7' => 'list_all_sources', '8' => 'list_all_sources',
-                '9' => 'add_a_movie', '10' => 'add_a_music_album', '11' => 'add_a_movie', '12' => 'add_a_movie' }
-
+                '9' => 'add_a_movie', '10' => 'add_a_movie',
+                '11' => 'add_a_movie', '12' => 'add_a_movie' }
     loop do
       case @option = menu_option
 
       when '0'
+        writer
         music_writer
         puts "Thank you for using this app!\n"
-
         break
-
       else
-
         @ui.send(methods[@option])
-
       end
     end
   end

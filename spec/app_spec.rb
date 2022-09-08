@@ -5,7 +5,6 @@ describe App do
     @app = App.new
 
     @source_added = @app.add_source('Newspaper')
-
     @movie_added = @app.add_movie('Driving Miss Daisy', 'Aug 30, 2022', false, @source_added, @source_added,
                                   @source_added, @source_added)
   end
@@ -21,6 +20,14 @@ describe App do
 
     it 'movie_added has Movie class' do
       expect(@movie_added).to be_instance_of Movie
+    end
+
+    it 'movie_added has Driving Miss Daisy as title' do
+      expect(@movie_added.title).to eq('Driving Miss Daisy')
+    end
+
+    it 'movie_added has publish date as August 30, 2022' do
+      expect(@movie_added.publish_date).to eq(Date.parse('Aug 30, 2022'))
     end
 
     it 'movie_added has silent as false' do
