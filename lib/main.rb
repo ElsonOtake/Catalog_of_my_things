@@ -57,39 +57,8 @@ class Main
       end
     end
   end
-
-  # Andres part #################################
-  def create_label
-    @app.add_label('Gift', 'blue')
-    @app.add_label('New', 'red')
-    @app.add_label('recently earned', 'brown')
-    @app.add_label('Old', 'green')
-    @app.add_label('From a friend', 'black')
-  end
-  ##############################################
-
-  def create_genre
-    @app.add_genre('Rock')
-    @app.add_genre('Pop')
-    @app.add_genre('Hip Hop')
-    @app.add_genre('EDM')
-    @app.add_genre('Techno')
-    @app.add_genre('Classic')
-    @app.add_genre('Reggeton')
-    @app.add_genre('Slow Jams')
-  end
-
-  def create_author
-    @app.add_author('Pepito', 'Respawn')
-    @app.add_author('Riot', 'gon')
-    @app.add_author('Ubisoft', 'ramirez')
-    @app.add_author('Activision', 'garzon')
-    @app.add_author('Electronic Arts', 'iku')
-    @app.add_author('stephen', 'king')
-  end
 end
 
 puts "\nWelcome to Catalog of my things App!"
 main = Main.new
-main.create_author
 main.menu
