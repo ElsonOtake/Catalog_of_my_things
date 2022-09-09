@@ -97,7 +97,7 @@ class App
 
   def add_game(title, publish_date, multiplayer, last_played_at, *param)
     genre, author, source, label = *param
-    game = Game.new(title, publish_date, multiplayer, last_played_at)
+    game = Games.new(title, publish_date, multiplayer, last_played_at)
     game.genre = genre
     game.author = author
     game.source = source
