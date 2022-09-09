@@ -76,8 +76,8 @@ class App
   def add_book(title, publisher, cover_state, publish_date, *param)
     _genre, _author, source, label = *param
     book = Book.new(title, publisher, cover_state, publish_date)
-    book.genre = source # pendiente ------------------------------
-    book.author = source # pendiente  ----------------------------
+    book.genre = source
+    book.author = source
     book.source = source
     book.label = label
     @list_of_books << book
