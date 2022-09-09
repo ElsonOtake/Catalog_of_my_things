@@ -19,6 +19,14 @@ describe Movie do
       expect(@movie.source).to be_instance_of Source
     end
 
+    it 'Has title as Shawshank Redemption' do
+      expect(@movie.title).to eq('Shawshank Redemption')
+    end
+
+    it 'Has not the title as Online shop' do
+      expect(@movie.title).not_to eq('Online shop')
+    end
+
     it 'Has publish date as September 02, 2002' do
       expect(@movie.publish_date).to eq(Date.parse('Sep 02, 2002'))
     end

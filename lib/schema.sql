@@ -32,6 +32,7 @@ CREATE INDEX ON item (source_id);
 
 CREATE INDEX ON item (label_id);
 
+
 CREATE TABLE movie (
   id integer GENERATED ALWAYS AS IDENTITY,
   silent boolean NOT NULL,
@@ -75,12 +76,12 @@ CREATE TABLE game (
   last_played_at date NOT NULL,
   item_id integer NOT NULL,
   PRIMARY KEY(id),
-  CONSTRAINT fk_music_album_item
+  CONSTRAINT fk_game_item
     FOREIGN KEY(item_id) 
       REFERENCES item(id)
 );
 
-CREATE INDEX ON music_album (item_id);
+CREATE INDEX ON game (item_id);
 
 CREATE TABLE genre (
   id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
