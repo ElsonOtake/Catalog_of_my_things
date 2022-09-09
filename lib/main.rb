@@ -37,7 +37,7 @@ class Main
 
   def menu
     methods = { '1' => 'list_all_books', '2' => 'list_all_music_albums',
-                '3' => 'list_all_movies', '4' => 'list_of_games',
+                '3' => 'list_all_movies', '4' => 'list_all_games',
                 '5' => 'list_all_genres', '6' => 'list_all_labels',
                 '7' => 'list_all_authors', '8' => 'list_all_sources',
                 '9' => 'add_a_book', '10' => 'add_a_music_album',
