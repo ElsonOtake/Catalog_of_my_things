@@ -13,12 +13,12 @@ class Main
     @option = ''
     @app.list_of_labels = reader_label
     @app.list_of_sources = reader_source
+    @app.list_of_genres = reader_genre
+    @app.list_of_authors = reader_author
     @app.list_of_movies = reader_movie
     @app.list_of_books = reader_book
-    @app.list_of_genres = reader_genre
     @app.list_of_music_albums = reader_music
     @app.list_of_games = reader_game
-    @app.list_of_authors = reader_author
   end
 
   def menu_content
@@ -56,7 +56,6 @@ class Main
     end
   end
 
-  # Andres part #################################
   def create_label
     @app.add_label('Gift', 'blue')
     @app.add_label('New', 'red')
@@ -64,7 +63,6 @@ class Main
     @app.add_label('Old', 'green')
     @app.add_label('From a friend', 'black')
   end
-  ##############################################
 
   def create_genre
     @app.add_genre('Rock')
