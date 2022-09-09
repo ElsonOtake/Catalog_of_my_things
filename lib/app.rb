@@ -5,9 +5,11 @@ require_relative './label'
 require_relative './genre'
 require_relative './music_album'
 require_relative './author'
+require_relative './games/games'
 
 class App
-  attr_writer :list_of_movies, :list_of_sources, :list_of_books, :list_of_labels, :list_of_music_albums, :list_of_genres
+  attr_writer :list_of_movies, :list_of_sources, :list_of_books, :list_of_labels, :list_of_music_albums,
+              :list_of_genres, :list_of_games, :list_of_authors
 
   def initialize
     @list_of_movies = []
@@ -23,7 +25,6 @@ class App
     @list_of_authors = []
   end
 
-  # Elson part EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
   def list_movies
     @list_of_movies
   end
@@ -31,9 +32,6 @@ class App
   def list_sources
     @list_of_sources
   end
-  # EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-
-  # Andres Part AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
   def list_books
     @list_of_books
@@ -42,8 +40,6 @@ class App
   def list_labels
     @list_of_labels
   end
-
-  # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
   def list_music_albums
     @list_of_music_albums
@@ -61,7 +57,6 @@ class App
     @list_of_authors
   end
 
-  # Elson part EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
   def add_movie(title, publish_date, silent, *param)
     _genre, _author, source, _label = *param
     movie = Movie.new(title, publish_date, silent)
@@ -77,9 +72,7 @@ class App
 
     movie
   end
-  # EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-
-  # Andres Part #####
+ 
   def add_book(title, publisher, cover_state, publish_date, *param)
     _genre, _author, source, label = *param
     book = Book.new(title, publisher, cover_state, publish_date)
@@ -90,7 +83,6 @@ class App
     @list_of_books << book
     book
   end
-  ##############################################################
 
   def add_music_album(title, publish_date, on_spotify, *param)
     genre, source, _author, label = *param
@@ -101,6 +93,17 @@ class App
     music_album.label = label
     @list_of_music_albums << music_album
     music_album
+  end
+
+  def add_game(title, publish_date, multiplayer, last_played_at, *param)
+    genre, author, source, label = *param
+    game = Game.new(title, publish_date, multiplayer, last_played_at)
+    game.genre = genre
+    game.author = author
+    game.source = source
+    game.label = label
+    @list_of_games << game
+    game
   end
 
   # Elson part EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
