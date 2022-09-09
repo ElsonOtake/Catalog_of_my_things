@@ -62,7 +62,7 @@ class Ui
     puts "Games list\n\n"
     puts 'The games album list is empty!' if @app.list_games.length.zero?
     @app.list_games.each do |game|
-      puts "  Title: #{game.title}"
+      puts "  Title: #{game}"
       puts "  Publish date: #{game.publish_date}"
       puts "  Genre: #{game.genre.name}"
       puts "  Author: #{game.author.first_name}"

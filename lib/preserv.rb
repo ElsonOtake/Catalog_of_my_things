@@ -64,8 +64,8 @@ module Preserv
     @app.list_games.each do |game|
       array_game = [game.title, game.publish_date, game.multiplayer, game.last_played_at, game.genre.name,
                     game.author.first_name, game.source.name, game.label.title]
-      json_movie = JSON.generate(array_game)
-      File.write('data/game.json', "#{json_movie}\n", mode: 'a')
+      json_game = JSON.generate(array_game)
+      File.write('data/game.json', "#{json_game}\n", mode: 'a')
     end
     @app.list_authors.each do |source|
       json_author = JSON.generate(source)
@@ -131,12 +131,12 @@ module Preserv
     game = []
     File.foreach('data/game.json') do |line|
       game = JSON.parse(line)
-      author = @app.list_games.select { |ath| ath.first_name == game[5] }
+      author = @app.list_authors.select { |ath| ath.first_name == game[5] }
       genre = @app.list_genres.select { |gen| gen.name == game[4] }
       source = @app.list_sources.select { |src| src.name == game[6] }
       label = @app.list_labels.select { |lab| lab.title == game[7] }
-      game << @app.add_music_album(music[0], music[1], music[2],
-                                   genre[0], author[0], source[0], label[0])
+      game << @app.add_game(game[0], game[1], game[2], game[3],
+                            genre[0], author[0], source[0], label[0])
     end
     game
   end
