@@ -13,6 +13,11 @@ class Main
     @option = ''
     @app.list_of_sources = reader_source
     @app.list_of_movies = reader_movie
+
+    # Andres part #################################
+    @app.list_of_labels = reader_label
+    @app.list_of_books = reader_book
+    ##############################################
   end
 
   def menu_content
@@ -46,8 +51,19 @@ class Main
       end
     end
   end
+
+   # Andres part #################################
+  def create_label
+    @app.create_label('Gift', 'blue')
+    @app.create_label('New', 'red')
+    @app.create_label('recently earned', 'brown')
+    @app.create_label('Old', 'green')
+    @app.create_label('From a friend', 'black')
+  end
+  ##############################################
 end
 
 puts "\nWelcome to Catalog of my things App!"
 main = Main.new
+create_label
 main.menu
