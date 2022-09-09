@@ -22,8 +22,8 @@ module List
     @app.list_books.each do |book|
       puts "  Title: #{book.title}"
       puts "  Publish date: #{book.publish_date}"
-      puts "  Genre: #{book.source.name}" 
-      puts "  Author: #{book.source.name} #{book.source.name}" 
+      puts "  Genre: #{book.source.name}"
+      puts "  Author: #{book.source.name} #{book.source.name}"
       puts "  Source: #{book.source.name}"
       puts "  Label title: #{book.label.title} label color: #{book.label.color}"
       puts "  Cover state: #{book.cover_state}"
