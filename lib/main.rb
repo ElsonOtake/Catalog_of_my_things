@@ -23,7 +23,7 @@ class Main
   end
 
   def menu_content
-    options = ['Exit', 'List all books', 'List all music albums', 'List all movies', 'List of games',
+    options = ['Exit', 'List all books', 'List all music albums', 'List all movies', 'List all games',
                'List all genres', 'List all labels', 'List all authors', 'List all sources',
                'Add a book', 'Add a music album', 'Add a movie', 'Add a game']
     puts "\nPlease choose an option by entering a number:"
