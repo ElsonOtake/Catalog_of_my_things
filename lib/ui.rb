@@ -24,7 +24,6 @@ class Ui
     end
   end
 
-  # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   def list_all_books
     puts "Books list\n\n"
     puts 'The book list is empty!' if @app.list_books.length.zero?
@@ -41,7 +40,6 @@ class Ui
       puts
     end
   end
-  # NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNDDDDDDDDDDDDDDDDD
 
   def list_all_music_albums
     puts "Music list\n\n"
@@ -60,19 +58,33 @@ class Ui
     end
   end
 
+  def list_all_games
+    puts "Games list\n\n"
+    puts 'The games album list is empty!' if @app.list_games.length.zero?
+    @app.list_games.each do |game|
+      puts "  Title: #{game.title}"
+      puts "  Publish date: #{game.publish_date}"
+      puts "  Genre: #{game.genre.name}"
+      puts "  Author: #{game.author.first_name}"
+      puts "  Source: #{game.source.name}"
+      puts "  Label title: #{game.label.title} label color: #{game.label.color}"
+      puts "  Multiplayer: #{game.multiplayer}"
+      puts "  Id: #{game.id}"
+      puts
+    end
+  end
+
   def list_all_sources
     puts "Source list\n\n"
     puts 'The sources list is empty!' if @app.list_sources.length.zero?
     @app.list_sources.each { |source| puts "  #{source.name}" }
   end
 
-  # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   def list_all_labels
     puts "Label list\n\n"
     puts 'The label list is empty!' if @app.list_labels.length.zero?
     @app.list_labels.each { |label| puts "  #{label.title}" }
   end
-  # NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNDDDDDDDDDDDDDDDDD
 
   def list_all_genres
     puts "Genre list\n\n"
