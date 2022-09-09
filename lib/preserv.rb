@@ -1,6 +1,5 @@
 require './app'
 require 'json'
-require 'pry'
 
 module Preserv
   def writer
