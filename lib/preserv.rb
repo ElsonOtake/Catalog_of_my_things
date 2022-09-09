@@ -57,7 +57,22 @@ module Preserv
     end
   end
 
-  # Elson EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+  def game_writer
+    File.write('data/game.json', '', mode: 'w')
+    File.write('data/author.json', '', mode: 'w')
+
+    @app.list_games.each do |game|
+      array_game = [game.title, game.publish_date, game.multiplayer, game.last_played_at, game.genre.name,
+                    game.author.first_name, game.source.name, game.label.title]
+      json_movie = JSON.generate(array_game)
+      File.write('data/movie.json', "#{json_movie}\n", mode: 'a')
+    end
+    @app.list_sources.each do |source|
+      json_source = JSON.generate(source)
+      File.write('data/source.json', "#{json_source}\n", mode: 'a')
+    end
+  end
+
   def reader_movie
     unless File.exist?('data/movie.json')
       File.open('data/movie.json', 'w')
@@ -72,9 +87,7 @@ module Preserv
     end
     movies
   end
-  # EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
-  # Andres AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   def reader_book
     unless File.exist?('data/book.json')
       File.open('data/book.json', 'w')
@@ -92,7 +105,6 @@ module Preserv
     end
     books
   end
-  # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
   def reader_music
     unless File.exist?('data/music_album.json')
@@ -109,6 +121,24 @@ module Preserv
                                           genre[0], source[0], genre[0], label[0])
     end
     music_album
+  end
+
+  def reader_game
+    unless File.exist?('data/game.json')
+      File.open('data/game.json', 'w')
+      return []
+    end
+    game = []
+    File.foreach('data/game.json') do |line|
+      game = JSON.parse(line)
+      author = @app.list_games.select { |ath| ath.first_name == game[5] }
+      genre = @app.list_genres.select { |gen| gen.name == game[4] }
+      source = @app.list_sources.select { |src| src.name == game[6] }
+      label = @app.list_labels.select { |lab| lab.title == game[7] }
+      game << @app.add_music_album(music[0], music[1], music[2],
+                                   genre[0], author[0], source[0], label[0])
+    end
+    game
   end
 
   def reader_source
@@ -145,5 +175,17 @@ module Preserv
       genres << JSON.parse(line, create_additions: true)
     end
     genres
+  end
+
+  def reader_author
+    unless File.exist?('data/author.json')
+      File.open('data/author.json', 'w')
+      return []
+    end
+    authors = []
+    File.foreach('data/author.json') do |line|
+      authors << JSON.parse(line, create_additions: true)
+    end
+    authors
   end
 end
