@@ -65,7 +65,7 @@ module Preserv
       array_game = [game.title, game.publish_date, game.multiplayer, game.last_played_at, game.genre.name,
                     game.author.first_name, game.source.name, game.label.title]
       json_movie = JSON.generate(array_game)
-      File.write('data/movie.json', "#{json_movie}\n", mode: 'a')
+      File.write('data/game.json', "#{json_movie}\n", mode: 'a')
     end
     @app.list_authors.each do |source|
       json_author = JSON.generate(source)

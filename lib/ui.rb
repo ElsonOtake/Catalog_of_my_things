@@ -94,8 +94,8 @@ class Ui
 
   def list_all_authors
     puts "authors list\n\n"
-    puts 'The authors list is empty!' if @app.list_games.length.zero?
-    @app.list_games.each { |game| puts "  #{game.first_name}" }
+    puts 'The authors list is empty!' if @app.list_authors.length.zero?
+    @app.list_authors.each { |author| puts "  #{author.first_name} #{author.last_name}" }
   end
 
   def select_source
