@@ -18,6 +18,8 @@ class Main
     @app.list_of_labels = reader_label
     @app.list_of_books = reader_book
     ##############################################
+    @app.list_of_genres = reader_genre
+    @app.list_of_music_albums = reader_music
   end
 
   def menu_content
@@ -34,16 +36,18 @@ class Main
   end
 
   def menu
-    methods = { '1' => 'list_all_movies', '2' => 'list_all_movies',
-                '3' => 'list_all_movies', '4' => 'list_all_movies',
-                '5' => 'list_all_sources', '6' => 'list_all_sources',
-                '7' => 'list_all_sources', '8' => 'list_all_sources',
-                '9' => 'add_a_movie', '10' => 'add_a_movie',
-                '11' => 'add_a_movie', '12' => 'add_a_movie' }
+    methods = { '1' => 'list_all_books', '2' => 'list_all_music_albums',
+                '3' => 'list_all_movies', '4' => 'list_of_games',
+                '5' => 'list_all_genres', '6' => 'list_all_labels',
+                '7' => 'list_all_authors', '8' => 'list_all_sources',
+                '9' => 'add_a_book', '10' => 'add_a_music_album',
+                '11' => 'add_a_movie', '12' => 'add_a_game' }
     loop do
       case @option = menu_option
       when '0'
         writer
+        book_label_writer
+        music_writer
         puts "Thank you for using this app!\n"
         break
       else
@@ -52,18 +56,30 @@ class Main
     end
   end
 
-   # Andres part #################################
+  # Andres part #################################
   def create_label
-    @app.create_label('Gift', 'blue')
-    @app.create_label('New', 'red')
-    @app.create_label('recently earned', 'brown')
-    @app.create_label('Old', 'green')
-    @app.create_label('From a friend', 'black')
+    @app.add_label('Gift', 'blue')
+    @app.add_label('New', 'red')
+    @app.add_label('recently earned', 'brown')
+    @app.add_label('Old', 'green')
+    @app.add_label('From a friend', 'black')
   end
   ##############################################
+
+  def create_genre
+    @app.add_genre('Rock')
+    @app.add_genre('Pop')
+    @app.add_genre('Hip Hop')
+    @app.add_genre('EDM')
+    @app.add_genre('Techno')
+    @app.add_genre('Classic')
+    @app.add_genre('Reggeton')
+    @app.add_genre('Slow Jams')
+  end
 end
 
 puts "\nWelcome to Catalog of my things App!"
 main = Main.new
-create_label
+main.create_label
+main.create_genre
 main.menu
