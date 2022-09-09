@@ -72,7 +72,7 @@ class App
 
     movie
   end
- 
+
   def add_book(title, publisher, cover_state, publish_date, *param)
     _genre, _author, source, label = *param
     book = Book.new(title, publisher, cover_state, publish_date)
@@ -106,7 +106,6 @@ class App
     game
   end
 
-  # Elson part EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
   def add_source(name)
     source = Source.new(name)
 
@@ -114,19 +113,22 @@ class App
 
     source
   end
-  # EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
-  # Andres Part AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   def add_label(title, color)
     label = Label.new(title, color)
     @list_of_labels << label
     label
   end
-  # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
   def add_genre(name)
     genre = Genre.new(name)
     @list_of_genres << genre
     genre
+  end
+
+  def add_author(first_name, last_name)
+    author = Author.new(first_name, last_name)
+    @list_of_authors << author
+    author
   end
 end
