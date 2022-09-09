@@ -78,11 +78,12 @@ class Main
   end
 
   def create_author
-    @app.add_author('Respawn', 'Respawn')
-    @app.add_author('Riot', 'Riot')
-    @app.add_author('Ubisoft', 'Ubisoft')
-    @app.add_author('Activision', 'Activision')
-    @app.add_author('Electronic Arts', 'Electronic Arts')
+    @app.add_author('Pepito', 'Respawn')
+    @app.add_author('Riot', 'gon')
+    @app.add_author('Ubisoft', 'ramirez')
+    @app.add_author('Activision', 'garzon')
+    @app.add_author('Electronic Arts', 'iku')
+    @app.add_author('stephen', 'king')
   end
 end
 
