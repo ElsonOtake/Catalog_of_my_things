@@ -2,10 +2,12 @@ require './app'
 require './ui'
 require './check_input'
 require './preserv'
+require './reader'
 
 class Main
   include CheckInput
   include Preserv
+  include Reader
 
   def initialize
     @app = App.new
