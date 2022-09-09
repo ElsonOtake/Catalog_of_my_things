@@ -10,6 +10,11 @@
 - SQL 
 - Postgresql
 
+## Video 
+
+
+https://user-images.githubusercontent.com/95243996/189443742-2b8bcda0-c7c3-4ae2-9791-0e5224723355.mp4
+
 
 ## Getting Started
 
