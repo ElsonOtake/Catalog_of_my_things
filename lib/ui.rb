@@ -217,12 +217,12 @@ class Ui
     publish_date = check_input('Publish date: YYYY/MM/DD ') do
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
-    puts 'please enter if game is multyplayer [true/false]'
+    puts 'please enter if game is multiplayer [true/false]'
     multiplayer = gets.chomp
     puts 'please enter last played date: YYYY/MM/DD'
     lastplayed = gets.chomp
     @app.add_game(title, publish_date, multiplayer, lastplayed, @app.list_genres[genre.to_i],
                   @app.list_authors[author.to_i], @app.list_sources[source.to_i], @app.list_labels[label.to_i])
-    puts 'Music Album created successfully'
+    puts 'Game created successfully'
   end
 end
