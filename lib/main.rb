@@ -13,13 +13,12 @@ class Main
     @option = ''
     @app.list_of_sources = reader_source
     @app.list_of_movies = reader_movie
-
-    # Andres part #################################
     @app.list_of_labels = reader_label
     @app.list_of_books = reader_book
-    ##############################################
     @app.list_of_genres = reader_genre
     @app.list_of_music_albums = reader_music
+    @app.list_of_games = reader_game
+    @app.list_of_authors = reader_author
   end
 
   def menu_content
@@ -48,6 +47,7 @@ class Main
         writer
         book_label_writer
         music_writer
+        game_writer
         puts "Thank you for using this app!\n"
         break
       else
@@ -75,6 +75,14 @@ class Main
     @app.add_genre('Classic')
     @app.add_genre('Reggeton')
     @app.add_genre('Slow Jams')
+  end
+
+  def create_author
+    @app.add_author('Respawn', 'Respawn')
+    @app.add_author('Riot', 'Riot')
+    @app.add_author('Ubisoft', 'Ubisoft')
+    @app.add_author('Activision', 'Activision')
+    @app.add_author('Electronic Arts', 'Electronic Arts')
   end
 end
 
