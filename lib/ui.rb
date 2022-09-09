@@ -92,6 +92,12 @@ class Ui
     @app.list_genres.each { |genre| puts "  #{genre.name}" }
   end
 
+  def list_all_authors
+    puts "Label list\n\n"
+    puts 'The label list is empty!' if @app.list_games.length.zero?
+    @app.list_games.each { |game| puts "  #{game.first_name}" }
+  end
+
   def select_source
     puts 'Select a source from the following list by number'
     @app.list_sources.each_with_index do |source, index|
