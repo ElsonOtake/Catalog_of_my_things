@@ -121,6 +121,13 @@ class Ui
     end
   end
 
+  def select_author
+    puts 'Select an author from the following list by number'
+    @app.list_authors.each_with_index do |author, index|
+      puts "#{index}) Author: \"#{author.first_name}\""
+    end
+  end
+
   def list_source_option
     select_source
     list_size = @app.list_sources.length
