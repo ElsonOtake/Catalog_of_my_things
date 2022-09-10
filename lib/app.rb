@@ -5,7 +5,7 @@ require_relative './label'
 require_relative './book'
 require_relative './music_album'
 require_relative './movie'
-require_relative './games'
+require_relative './game'
 
 class App
   attr_writer :list_of_genres, :list_of_authors, :list_of_sources, :list_of_labels,
@@ -113,7 +113,7 @@ class App
 
   def add_game(title, publish_date, multiplayer, last_played_at, *param)
     genre, author, source, label = *param
-    game = Games.new(title, publish_date, multiplayer, last_played_at)
+    game = Game.new(title, publish_date, multiplayer, last_played_at)
     game.genre = genre
     game.author = author
     game.source = source
