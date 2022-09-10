@@ -55,12 +55,12 @@ class App
   end
 
   def add_movie(title, publish_date, silent, *param)
-    genre, _author, source, _label = *param
+    genre, author, source, label = *param
     movie = Movie.new(title, publish_date, silent)
     movie.genre = genre
-    movie.author = source
+    movie.author = author
     movie.source = source
-    movie.label = source
+    movie.label = label
     @list_of_movies << movie
     movie
   end

@@ -33,7 +33,7 @@ class Ui
   def list_all_labels
     puts "Label list\n\n"
     puts 'The label list is empty!' if @app.list_labels.length.zero?
-    @app.list_labels.each { |label| puts "  #{label.title}" }
+    @app.list_labels.each { |label| puts "  #{label.title} #{label.color}" }
   end
 
   def list_all_genres
@@ -108,14 +108,15 @@ class Ui
 
     title = check_input('Title: ') { @option != '' }
     genre = list_genre_option
-    author = ''
+    author = list_author_option
     source = list_source_option
-    label = ''
+    label = list_label_option
     publish_date = check_input('Publish date: YYYY/MM/DD ') do
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
     silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
-    @app.add_movie(title, publish_date, silent, @app.list_genres[genre.to_i], author, @app.list_sources[source.to_i], label)
+    @app.add_movie(title, publish_date, silent, @app.list_genres[genre.to_i], @app.list_authors[author.to_i],
+      @app.list_sources[source.to_i], @app.list_labels[label.to_i])
     puts 'Movie created successfully'
   end
 
