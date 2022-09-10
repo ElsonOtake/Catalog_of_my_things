@@ -18,12 +18,12 @@ module Reader
   end
 
   def reader_music
-    unless File.exist?('data/music_album.json')
-      File.open('data/music_album.json', 'w')
+    unless File.exist?('data/music.json')
+      File.open('data/music.json', 'w')
       return []
     end
     music_album = []
-    File.foreach('data/music_album.json') do |line|
+    File.foreach('data/music.json') do |line|
       music = JSON.parse(line)
       genre = @app.list_genres.select { |gnr| gnr.name == music[3] }
       author = @app.list_authors.select { |aut| aut.first_name == music[4] && aut.last_name == music[5]}

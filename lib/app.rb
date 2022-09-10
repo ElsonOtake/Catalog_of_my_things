@@ -3,13 +3,13 @@ require_relative './author'
 require_relative './source'
 require_relative './label'
 require_relative './book'
-require_relative './music_album'
+require_relative './music'
 require_relative './movie'
 require_relative './game'
 
 class App
   attr_writer :list_of_genres, :list_of_authors, :list_of_sources, :list_of_labels,
-              :list_of_books, :list_of_music_albums, :list_of_movies, :list_of_games
+              :list_of_books, :list_of_musics, :list_of_movies, :list_of_games
 
   def initialize
     @list_of_genres = []
@@ -17,7 +17,7 @@ class App
     @list_of_sources = []
     @list_of_labels = []
     @list_of_books = []
-    @list_of_music_albums = []
+    @list_of_musics = []
     @list_of_movies = []
     @list_of_games = []
   end
@@ -42,8 +42,8 @@ class App
     @list_of_books
   end
 
-  def list_music_albums
-    @list_of_music_albums
+  def list_musics
+    @list_of_musics
   end
 
   def list_movies
@@ -96,7 +96,7 @@ class App
     music_album.author = author
     music_album.source = source
     music_album.label = label
-    @list_of_music_albums << music_album
+    @list_of_musics << music_album
     music_album
   end
 

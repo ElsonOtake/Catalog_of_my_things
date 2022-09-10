@@ -35,15 +35,15 @@ module Preserv
   end
 
   def music_writer
-    File.write('data/music_album.json', '', mode: 'w')
+    File.write('data/music.json', '', mode: 'w')
     File.write('data/genre.json', '', mode: 'w')
 
-    @app.list_music_albums.each do |music_album|
+    @app.list_musics.each do |music_album|
       array_music_album = [music_album.title, music_album.publish_date, music_album.on_spotify,
         music_album.genre.name, music_album.author.first_name,
         music_album.author.last_name, music_album.source.name, music_album.label.title, music_album.label.color]
       json_music_album = JSON.generate(array_music_album)
-      File.write('data/music_album.json', "#{json_music_album}\n", mode: 'a')
+      File.write('data/music.json', "#{json_music_album}\n", mode: 'a')
     end
     @app.list_genres.each do |genre|
       json_genre = JSON.generate(genre)
