@@ -1,6 +1,6 @@
-# Catalog_of_my_things
+# Catalog of my things
 
-> Catalog of my things is a console app that will help you to keep a record of different types of things you own: books, music albums, movies, and games. Everything will be based on the UML class diagram. The data will be stored in JSON files.
+> Catalog of my things is a console app that will help you to keep a record of different types of things you own: books, music albums, movies, and games. Everything was based on the [UML class diagram](./catalog_of_my_things.png) provided. The data stored in JSON files.
 
 
 ## Built With
@@ -12,8 +12,7 @@
 
 ## Video 
 
-
-https://user-images.githubusercontent.com/95243996/189443742-2b8bcda0-c7c3-4ae2-9791-0e5224723355.mp4
+[Project presentation video](https://user-images.githubusercontent.com/95243996/189443742-2b8bcda0-c7c3-4ae2-9791-0e5224723355.mp4)
 
 
 ## Getting Started
@@ -44,11 +43,7 @@ Cloning a repository
 
 - Change the current working directory to the location where you want the cloned directory;
 
-- Type `git clone`, and then paste the URL you copied earlier;
-
-- run `npm install` to install all dependencies;
-
-- run `npm run start` to start the application locally.
+- Type `git clone`, and then paste the URL you copied earlier.
 
 
 ## Authors
