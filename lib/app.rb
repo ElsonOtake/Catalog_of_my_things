@@ -9,8 +9,7 @@ require_relative './games/games'
 
 class App
   attr_writer :list_of_genres, :list_of_authors, :list_of_sources, :list_of_labels,
-  :list_of_books, :list_of_music_albums, :list_of_movies, :list_of_games
-              
+              :list_of_books, :list_of_music_albums, :list_of_movies, :list_of_games
 
   def initialize
     @list_of_genres = []
@@ -22,7 +21,6 @@ class App
     @list_of_movies = []
     @list_of_games = []
   end
-
 
   def list_genres
     @list_of_genres
@@ -92,7 +90,7 @@ class App
   end
 
   def add_music_album(title, publish_date, on_spotify, *param)
-    genre, source, _author, label = *param
+    genre, author, source, label = *param
     music_album = MusicAlbum.new(title, publish_date, on_spotify)
     music_album.genre = genre
     music_album.author = author
