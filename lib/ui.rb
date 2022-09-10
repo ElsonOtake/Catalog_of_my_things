@@ -116,14 +116,14 @@ class Ui
     end
     silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
     @app.add_movie(title, publish_date, silent, @app.list_genres[genre.to_i], @app.list_authors[author.to_i],
-      @app.list_sources[source.to_i], @app.list_labels[label.to_i])
+                   @app.list_sources[source.to_i], @app.list_labels[label.to_i])
     puts 'Movie created successfully'
   end
 
   def add_a_book
     title = check_input('Title: ') { @option != '' }
-    genre = ''
-    author = ''
+    genre = list_genre_option
+    author = list_author_option
     source = list_source_option
     label = list_label_option
     publish_date = check_input('Publish date: YYYY/MM/DD ') do
@@ -133,8 +133,8 @@ class Ui
     publisher = gets.chomp
     puts 'please enter the cover state [good/bad]'
     cover_state = gets.chomp
-    @app.add_book(title, publisher, cover_state, publish_date, genre, author, @app.list_sources[source.to_i],
-                  @app.list_labels[label.to_i])
+    @app.add_book(title, publisher, cover_state, publish_date, @app.list_genres[genre.to_i], @app.list_authors[author.to_i],
+                  @app.list_sources[source.to_i], @app.list_labels[label.to_i])
     puts 'Book created successfully'
   end
 
@@ -144,15 +144,15 @@ class Ui
 
     title = check_input('Title: ') { @option != '' }
     genre = list_genre_option
-    author = ''
+    author = list_author_option
     source = list_source_option
     label = list_label_option
     publish_date = check_input('Publish date: YYYY/MM/DD ') do
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
     on_spotify = check_input('Is it on Spotify: [true/false] ') { %w[true false].include?(@option.downcase) }
-    @app.add_music_album(title, publish_date, on_spotify, @app.list_genres[genre.to_i],
-                         @app.list_sources[source.to_i], author, @app.list_labels[label.to_i])
+    @app.add_music_album(title, publish_date, on_spotify, @app.list_genres[genre.to_i], @app.list_authors[author.to_i],
+                         @app.list_sources[source.to_i], @app.list_labels[label.to_i])
     puts 'Music Album created successfully'
   end
 

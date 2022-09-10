@@ -23,8 +23,8 @@ module Preserv
     File.write('data/label.json', '', mode: 'w')
 
     @app.list_books.each do |book|
-      array_book = [book.title, book.publisher, book.cover_state, book.publish_date, book.source.name,
-                    book.label.title, book.label.color]
+      array_book = [book.title, book.publisher, book.cover_state, book.publish_date, book.genre.name, book.author.first_name,
+        book.author.last_name, book.source.name, book.label.title, book.label.color]
       json_book = JSON.generate(array_book)
       File.write('data/book.json', "#{json_book}\n", mode: 'a')
     end
@@ -40,7 +40,8 @@ module Preserv
 
     @app.list_music_albums.each do |music_album|
       array_music_album = [music_album.title, music_album.publish_date, music_album.on_spotify,
-                           music_album.genre.name, music_album.source.name, music_album.label.title]
+        music_album.genre.name, music_album.author.first_name,
+        music_album.author.last_name, music_album.source.name, music_album.label.title, music_album.label.color]
       json_music_album = JSON.generate(array_music_album)
       File.write('data/music_album.json', "#{json_music_album}\n", mode: 'a')
     end
@@ -55,8 +56,8 @@ module Preserv
     File.write('data/author.json', '', mode: 'w')
 
     @app.list_games.each do |game|
-      array_game = [game.title, game.publish_date, game.multiplayer, game.last_played_at, game.genre.name,
-                    game.author.first_name, game.source.name, game.label.title]
+      array_game = [game.title, game.publish_date, game.multiplayer, game.last_played_at, game.genre.name, game.author.first_name,
+        game.author.last_name, game.source.name, game.label.title, game.label.color]
       json_game = JSON.generate(array_game)
       File.write('data/game.json', "#{json_game}\n", mode: 'a')
     end
