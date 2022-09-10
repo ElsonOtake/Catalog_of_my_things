@@ -2,10 +2,10 @@ require_relative './genre'
 require_relative './author'
 require_relative './source'
 require_relative './label'
-require_relative './books/book'
+require_relative './book'
 require_relative './music_album'
 require_relative './movie'
-require_relative './games/games'
+require_relative './games'
 
 class App
   attr_writer :list_of_genres, :list_of_authors, :list_of_sources, :list_of_labels,
