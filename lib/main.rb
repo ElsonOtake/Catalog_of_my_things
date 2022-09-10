@@ -41,7 +41,7 @@ class Main
                 '3' => 'list_all_movies', '4' => 'list_all_games',
                 '5' => 'list_all_genres', '6' => 'list_all_labels',
                 '7' => 'list_all_authors', '8' => 'list_all_sources',
-                '9' => 'add_a_book', '10' => 'add_a_music_album',
+                '9' => 'add_a_book', '10' => 'add_a_music',
                 '11' => 'add_a_movie', '12' => 'add_a_game' }
     loop do
       case @option = menu_option
