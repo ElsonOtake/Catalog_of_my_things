@@ -14,13 +14,10 @@ class App
   def initialize
     @list_of_movies = []
     @list_of_sources = []
-
     @list_of_books = []
     @list_of_labels = []
-
     @list_of_music_albums = []
     @list_of_genres = []
-
     @list_of_games = []
     @list_of_authors = []
   end
@@ -58,18 +55,13 @@ class App
   end
 
   def add_movie(title, publish_date, silent, *param)
-    _genre, _author, source, _label = *param
+    genre, _author, source, _label = *param
     movie = Movie.new(title, publish_date, silent)
-    movie.genre = source
-
+    movie.genre = genre
     movie.author = source
-
     movie.source = source
-
     movie.label = source
-
     @list_of_movies << movie
-
     movie
   end
 
@@ -108,9 +100,7 @@ class App
 
   def add_source(name)
     source = Source.new(name)
-
     @list_of_sources << source
-
     source
   end
 

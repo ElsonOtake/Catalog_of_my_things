@@ -5,7 +5,7 @@ module List
     @app.list_movies.each do |movie|
       puts "  Title: #{movie.title}"
       puts "  Publish date: #{movie.publish_date}"
-      puts "  Genre: #{movie.source.name}"
+      puts "  Genre: #{movie.genre.name}"
       puts "  Author: #{movie.source.name}"
       puts "  Source: #{movie.source.name}"
       puts "  Label: #{movie.source.name}"
