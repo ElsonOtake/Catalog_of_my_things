@@ -34,8 +34,8 @@ module List
 
   def list_my_music
     puts "Music list\n\n"
-    puts 'The music album list is empty!' if @app.list_music_albums.length.zero?
-    @app.list_music_albums.each do |music_album|
+    puts 'The music album list is empty!' if @app.list_musics.length.zero?
+    @app.list_musics.each do |music_album|
       puts "  Title: #{music_album.title}"
       puts "  Publish date: #{music_album.publish_date}"
       puts "  Genre: #{music_album.genre.name}"

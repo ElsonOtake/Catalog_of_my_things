@@ -6,7 +6,12 @@ class Ui
   include List
   def initialize(app)
     @app = app
+    @array_name = { 'genre' => @app.list_genres, 'author' => @app.list_authors, 'source' => @app.list_sources,
+                 'label' => @app.list_labels, 'book' => @app.list_books, 'music' => @app.list_musics,
+                 'movie' => @app.list_movies, 'game' => @app.list_games }
   end
+
+  
 
   def list_all_movies
     list_my_movie
@@ -24,28 +29,29 @@ class Ui
     list_my_games
   end
 
-  def list_all_sources
-    puts "Source list\n\n"
-    puts 'The sources list is empty!' if @app.list_sources.length.zero?
-    @app.list_sources.each { |source| puts "  #{source.name}" }
-  end
-
-  def list_all_labels
-    puts "Label list\n\n"
-    puts 'The label list is empty!' if @app.list_labels.length.zero?
-    @app.list_labels.each { |label| puts "  #{label.title} #{label.color}" }
+  def header_all_item_class(class_name)
+    puts "#{class_name.capitalize}s list\n\n"
+    puts 'The #{class_name.capitalize} list is empty!' if @array_name[class_name].size.zero?
   end
 
   def list_all_genres
-    puts "Genre list\n\n"
-    puts 'The Genre list is empty!' if @app.list_genres.length.zero?
+    header_all_item_class('genre')
     @app.list_genres.each { |genre| puts "  #{genre.name}" }
   end
 
   def list_all_authors
-    puts "authors list\n\n"
-    puts 'The authors list is empty!' if @app.list_authors.length.zero?
+    header_all_item_class('author')
     @app.list_authors.each { |author| puts "  #{author.first_name} #{author.last_name}" }
+  end
+
+  def list_all_sources
+    header_all_item_class('source')
+    @app.list_sources.each { |source| puts "  #{source.name}" }
+  end
+
+  def list_all_labels
+    header_all_item_class('label')
+    @app.list_labels.each { |label| puts "  #{label.title} #{label.color}" }
   end
 
   def select_source
@@ -129,9 +135,7 @@ class Ui
     publish_date = check_input('Publish date: YYYY/MM/DD ') do
       @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
-    puts 'please enter publisher name'
     publisher = gets.chomp
-    puts 'please enter the cover state [good/bad]'
     cover_state = gets.chomp
     @app.add_book(title, publisher, cover_state, publish_date, @app.list_genres[genre.to_i], @app.list_authors[author.to_i],
                   @app.list_sources[source.to_i], @app.list_labels[label.to_i])

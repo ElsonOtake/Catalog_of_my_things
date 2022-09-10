@@ -19,7 +19,7 @@ class Main
     @app.list_of_authors = reader_author
     @app.list_of_books = reader_book
     @app.list_of_movies = reader_movie
-    @app.list_of_music_albums = reader_music
+    @app.list_of_musics = reader_music
     @app.list_of_games = reader_game
   end
 
