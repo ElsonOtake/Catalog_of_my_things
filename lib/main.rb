@@ -1,13 +1,14 @@
+require 'json'
 require './app'
+require './reader'
 require './ui'
 require './check_input'
-require './preserv'
-require './reader'
+require './writer'
 
 class Main
-  include CheckInput
-  include Preserv
   include Reader
+  include CheckInput
+  include Writer
 
   def initialize
     @app = App.new
@@ -47,9 +48,6 @@ class Main
       case @option = menu_option
       when '0'
         writer
-        # book_label_writer
-        # music_writer
-        # game_writer
         puts "Thank you for using this app!\n"
         break
       else
