@@ -76,8 +76,8 @@ module Preserv
         file_array << @app.add_movie(data[0], data[1], data[8], read_genre(data), read_author(data), read_source(data),
                                      read_label(data))
       when 'data/game.json'
-        file_arr << @app.add_game(data[0], data[1], data[8], data[9], read_genre(data), read_author(data),
-                                  read_source(data), read_label(data))
+        file_array << @app.add_game(data[0], data[1], data[8], data[9], read_genre(data), read_author(data),
+                                    read_source(data), read_label(data))
       end
     end
     file_array
@@ -89,17 +89,6 @@ module Preserv
       return []
     end
     read_file('data/book.json')
-    # books = []
-    # File.foreach('data/book.json') do |line|
-    #   book = JSON.parse(line)
-    #   genre = @app.list_genres.select { |gnr| gnr.name == book[2] }
-    #   author = @app.list_authors.select { |aut| aut.first_name == book[3] && aut.last_name == book[4]}
-    #   source = @app.list_sources.select { |src| src.name == book[5] }
-    #   label = @app.list_labels.select { |lbl| lbl.title == book[6] && lbl.color == book[7]}
-    #   books << @app.add_book(book[0], book[1], book[8], book[9],
-    #                          genre[0], author[0], source[0], label[0])
-    # end
-    # books
   end
 
   def reader_music
@@ -108,17 +97,6 @@ module Preserv
       return []
     end
     read_file('data/music.json')
-    # music_album = []
-    # File.foreach('data/music.json') do |line|
-    #   music = JSON.parse(line)
-    #   genre = @app.list_genres.select { |gnr| gnr.name == music[2] }
-    #   author = @app.list_authors.select { |aut| aut.first_name == music[3] && aut.last_name == music[4]}
-    #   source = @app.list_sources.select { |src| src.name == music[5] }
-    #   label = @app.list_labels.select { |lbl| lbl.title == music[6] && lbl.color == music[7]}
-    #   music_album << @app.add_music_album(music[0], music[1], music[8],
-    #                                       genre[0], author[0], source[0], label[0])
-    # end
-    # music_album
   end
 
   def reader_movie
@@ -135,16 +113,5 @@ module Preserv
       return []
     end
     read_file('data/game.json')
-    # game_arr = []
-    # File.foreach('data/game.json') do |line|
-    #   game = JSON.parse(line)
-    #   genre = @app.list_genres.select { |gnr| gnr.name == game[2] }
-    #   author = @app.list_authors.select { |aut| aut.first_name == game[3] && aut.last_name == game[4]}
-    #   source = @app.list_sources.select { |src| src.name == game[5] }
-    #   label = @app.list_labels.select { |lbl| lbl.title == game[6] && lbl.color == game[7]}
-    #   game_arr << @app.add_game(game[0], game[1], game[8], game[9],
-    #                             genre[0], author[0], source[0], label[0])
-    # end
-    # game_arr
   end
 end
