@@ -3,8 +3,8 @@ require 'spec_helper'
 require 'date'
 
 describe Book do
-  book = Book.new('title', 'andres', 'Good', 'May 15, 2020')
-  book1 = Book.new('title', 'andres', 'bad', 'May 15, 2020')
+  book = Book.new('Sapiens', 'May 15, 2020', 'andres', 'good')
+  book1 = Book.new('Curtain', 'May 15, 2020', 'andres', 'bad')
 
   it 'book is an instance of Book class' do
     expect(book).to be_instance_of(Book)
