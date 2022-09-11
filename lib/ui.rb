@@ -101,7 +101,8 @@ class Ui
   def add_a_thing_music
     on_spotify = check_input('on Spotify?: [true/false] ') { %w[true false].include?(@option.downcase) }
     @app.add_music_album(@title, @publish_date, on_spotify, @app.list_genres[@genre.to_i],
-                         @app.list_authors[@author.to_i], @app.list_sources[@source.to_i], @app.list_labels[@label.to_i])
+                         @app.list_authors[@author.to_i], @app.list_sources[@source.to_i],
+                         @app.list_labels[@label.to_i])
   end
 
   def add_a_thing_movie
