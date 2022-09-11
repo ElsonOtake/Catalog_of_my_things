@@ -78,35 +78,33 @@ class App
     label
   end
 
+  def add_item_data(class_name, genre, author, source, label)
+    class_name.genre = genre
+    class_name.author = author
+    class_name.source = source
+    class_name.label = label
+  end
+
   def add_book(title, publish_date, publisher, cover_state, *param)
     genre, author, source, label = *param
     book = Book.new(title, publish_date, publisher, cover_state)
-    book.genre = genre
-    book.author = author
-    book.source = source
-    book.label = label
+    add_item_data(book, genre, author, source, label)
     @list_of_books << book
     book
   end
 
   def add_music_album(title, publish_date, on_spotify, *param)
     genre, author, source, label = *param
-    music_album = MusicAlbum.new(title, publish_date, on_spotify)
-    music_album.genre = genre
-    music_album.author = author
-    music_album.source = source
-    music_album.label = label
-    @list_of_musics << music_album
-    music_album
+    music = MusicAlbum.new(title, publish_date, on_spotify)
+    add_item_data(music, genre, author, source, label)
+    @list_of_musics << music
+    music
   end
 
   def add_movie(title, publish_date, silent, *param)
     genre, author, source, label = *param
     movie = Movie.new(title, publish_date, silent)
-    movie.genre = genre
-    movie.author = author
-    movie.source = source
-    movie.label = label
+    add_item_data(movie, genre, author, source, label)
     @list_of_movies << movie
     movie
   end
@@ -114,10 +112,7 @@ class App
   def add_game(title, publish_date, multiplayer, last_played_at, *param)
     genre, author, source, label = *param
     game = Game.new(title, publish_date, multiplayer, last_played_at)
-    game.genre = genre
-    game.author = author
-    game.source = source
-    game.label = label
+    add_item_data(game, genre, author, source, label)
     @list_of_games << game
     game
   end
