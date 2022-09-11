@@ -94,7 +94,7 @@ class Ui
   def add_a_thing_book
     publisher = check_input('Publisher ') { @option != '' }
     cover_state = check_input('Cover state: [good/bad] ') { %w[good bad].include?(@option.downcase) }
-    @app.add_book(@title, publisher, cover_state, @publish_date, @app.list_genres[@genre.to_i],
+    @app.add_book(@title, @publish_date, publisher, cover_state, @app.list_genres[@genre.to_i],
                   @app.list_authors[@author.to_i], @app.list_sources[@source.to_i], @app.list_labels[@label.to_i])
   end
 
@@ -153,6 +153,7 @@ class Ui
   def add_a_thing(class_name)
     return if empty_list?
 
+    puts "Add a #{class_name}"
     input_item_data
     add_a_thing_book if class_name.eql?('book')
     add_a_thing_music if class_name.eql?('music')

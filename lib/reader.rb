@@ -7,11 +7,11 @@ module Reader
     books = []
     File.foreach('data/book.json') do |line|
       book = JSON.parse(line)
-      genre = @app.list_genres.select { |gnr| gnr.name == book[4] }
-      author = @app.list_authors.select { |aut| aut.first_name == book[5] && aut.last_name == book[6]}
-      source = @app.list_sources.select { |src| src.name == book[7] }
-      label = @app.list_labels.select { |lbl| lbl.title == book[8] && lbl.color == book[9]}
-      books << @app.add_book(book[0], book[1], book[2], book[3],
+      genre = @app.list_genres.select { |gnr| gnr.name == book[2] }
+      author = @app.list_authors.select { |aut| aut.first_name == book[3] && aut.last_name == book[4]}
+      source = @app.list_sources.select { |src| src.name == book[5] }
+      label = @app.list_labels.select { |lbl| lbl.title == book[6] && lbl.color == book[7]}
+      books << @app.add_book(book[0], book[1], book[8], book[9],
                              genre[0], author[0], source[0], label[0])
     end
     books
@@ -25,11 +25,11 @@ module Reader
     music_album = []
     File.foreach('data/music.json') do |line|
       music = JSON.parse(line)
-      genre = @app.list_genres.select { |gnr| gnr.name == music[3] }
-      author = @app.list_authors.select { |aut| aut.first_name == music[4] && aut.last_name == music[5]}
-      source = @app.list_sources.select { |src| src.name == music[6] }
-      label = @app.list_labels.select { |lbl| lbl.title == music[7] && lbl.color == music[8]}
-      music_album << @app.add_music_album(music[0], music[1], music[2],
+      genre = @app.list_genres.select { |gnr| gnr.name == music[2] }
+      author = @app.list_authors.select { |aut| aut.first_name == music[3] && aut.last_name == music[4]}
+      source = @app.list_sources.select { |src| src.name == music[5] }
+      label = @app.list_labels.select { |lbl| lbl.title == music[6] && lbl.color == music[7]}
+      music_album << @app.add_music_album(music[0], music[1], music[8],
                                           genre[0], author[0], source[0], label[0])
     end
     music_album
@@ -43,11 +43,11 @@ module Reader
     game_arr = []
     File.foreach('data/game.json') do |line|
       game = JSON.parse(line)
-      genre = @app.list_genres.select { |gnr| gnr.name == game[4] }
-      author = @app.list_authors.select { |aut| aut.first_name == game[5] && aut.last_name == game[6]}
-      source = @app.list_sources.select { |src| src.name == game[7] }
-      label = @app.list_labels.select { |lbl| lbl.title == game[8] && lbl.color == game[9]}
-      game_arr << @app.add_game(game[0], game[1], game[2], game[3],
+      genre = @app.list_genres.select { |gnr| gnr.name == game[2] }
+      author = @app.list_authors.select { |aut| aut.first_name == game[3] && aut.last_name == game[4]}
+      source = @app.list_sources.select { |src| src.name == game[5] }
+      label = @app.list_labels.select { |lbl| lbl.title == game[6] && lbl.color == game[7]}
+      game_arr << @app.add_game(game[0], game[1], game[8], game[9],
                                 genre[0], author[0], source[0], label[0])
     end
     game_arr
