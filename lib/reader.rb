@@ -96,4 +96,15 @@ module Reader
     end
     read_file('data/game.json')
   end
+
+  def reader
+    @app.list_of_genres = reader_genre
+    @app.list_of_labels = reader_label
+    @app.list_of_sources = reader_source
+    @app.list_of_authors = reader_author
+    @app.list_of_books = reader_book
+    @app.list_of_movies = reader_movie
+    @app.list_of_musics = reader_music
+    @app.list_of_games = reader_game
+  end
 end
