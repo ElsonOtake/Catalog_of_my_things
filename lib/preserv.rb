@@ -2,13 +2,18 @@ require './app'
 require 'json'
 
 module Preserv
+  def clean_files
+    %w[genre author source label book music movie game].each do |class_name|
+      File.write("data/#{class_name}.json", '', mode: 'w')
+    end
+  end
+  
   def writer
-    File.write('data/movie.json', '', mode: 'w')
-    File.write('data/source.json', '', mode: 'w')
+    clean_files
 
     @app.list_movies.each do |movie|
       array_movie = [movie.title, movie.publish_date, movie.genre.name, movie.author.first_name,
-        movie.author.last_name, movie.source.name, movie.label.title, movie.label.color, movie.silent]
+                     movie.author.last_name, movie.source.name, movie.label.title, movie.label.color, movie.silent]
       json_movie = JSON.generate(array_movie)
       File.write('data/movie.json', "#{json_movie}\n", mode: 'a')
     end
@@ -16,12 +21,6 @@ module Preserv
       json_source = JSON.generate(source)
       File.write('data/source.json', "#{json_source}\n", mode: 'a')
     end
-  end
-
-  def book_label_writer
-    File.write('data/book.json', '', mode: 'w')
-    File.write('data/label.json', '', mode: 'w')
-
     @app.list_books.each do |book|
       array_book = [book.title, book.publish_date, book.genre.name, book.author.first_name,
         book.author.last_name, book.source.name, book.label.title, book.label.color, book.publisher, book.cover_state]
@@ -32,12 +31,6 @@ module Preserv
       json_label = JSON.generate(label)
       File.write('data/label.json', "#{json_label}\n", mode: 'a')
     end
-  end
-
-  def music_writer
-    File.write('data/music.json', '', mode: 'w')
-    File.write('data/genre.json', '', mode: 'w')
-
     @app.list_musics.each do |music_album|
       array_music_album = [music_album.title, music_album.publish_date,
         music_album.genre.name, music_album.author.first_name,
@@ -49,12 +42,6 @@ module Preserv
       json_genre = JSON.generate(genre)
       File.write('data/genre.json', "#{json_genre}\n", mode: 'a')
     end
-  end
-
-  def game_writer
-    File.write('data/game.json', '', mode: 'w')
-    File.write('data/author.json', '', mode: 'w')
-
     @app.list_games.each do |game|
       array_game = [game.title, game.publish_date, game.genre.name, game.author.first_name,
         game.author.last_name, game.source.name, game.label.title, game.label.color, game.multiplayer, game.last_played_at]

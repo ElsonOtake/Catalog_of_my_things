@@ -47,9 +47,9 @@ class Main
       case @option = menu_option
       when '0'
         writer
-        book_label_writer
-        music_writer
-        game_writer
+        # book_label_writer
+        # music_writer
+        # game_writer
         puts "Thank you for using this app!\n"
         break
       else
