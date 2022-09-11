@@ -1,8 +1,5 @@
-{"json_class":"Genre","a":["Rock"]}
-{"json_class":"Genre","a":["Pop"]}
-{"json_class":"Genre","a":["Hip Hop"]}
-{"json_class":"Genre","a":["EDM"]}
-{"json_class":"Genre","a":["Techno"]}
+{"json_class":"Genre","a":["News"]}
+{"json_class":"Genre","a":["Romance"]}
+{"json_class":"Genre","a":["Fiction"]}
+{"json_class":"Genre","a":["Comedy"]}
 {"json_class":"Genre","a":["Classic"]}
-{"json_class":"Genre","a":["Reggeton"]}
-{"json_class":"Genre","a":["Slow Jams"]}

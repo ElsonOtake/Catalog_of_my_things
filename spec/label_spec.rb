@@ -3,9 +3,9 @@ require 'date'
 require 'spec_helper'
 
 describe Label do
-  label = Label.new('title', 'red')
+  label = Label.new('Johnnie Walker', 'red')
 
-  item = Item.new('Title', 'May 15, 2020')
+  item = Item.new('Thing', 'May 15, 2020')
 
   label.add_item(item)
 
