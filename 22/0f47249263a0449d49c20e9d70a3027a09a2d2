@@ -1,0 +1,31 @@
+lib/game.rb
+  h_da978aeed56e72 1
+lib/movie.rb
+  h_da978aeed56e72 1
+lib/main.rb
+  h_da978aeed56e72 2-6,13-23,41,47,52
+  h_da978aeed56e72 46
+lib/music.rb
+  h_da978aeed56e72 1
+lib/check_input.rb
+  h_da978aeed56e72 6
+lib/ui.rb
+  h_da978aeed56e72 1
+lib/app.rb
+  h_da978aeed56e72 1-8
+.tool-versions
+  h_da978aeed56e72 1
+Gemfile.lock
+  h_da978aeed56e72 42,52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "220f47249263a0449d49c20e9d70a3027a09a2d2",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
