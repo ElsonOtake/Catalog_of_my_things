@@ -1,7 +1,11 @@
+require 'json'
+require 'fileutils'
+
 module Reader
   def reader_instance(file_name)
     unless File.exist?(file_name)
-      File.open(file_name, 'w')
+      FileUtils.mkdir_p(File.dirname(file_name))
+      FileUtils.touch(file_name)
       return []
     end
     instance_array = []
@@ -67,7 +71,8 @@ module Reader
 
   def reader_book
     unless File.exist?('data/book.json')
-      File.open('data/book.json', 'w')
+      FileUtils.mkdir_p(File.dirname('data/book.json'))
+      FileUtils.touch('data/book.json')
       return []
     end
     read_file('data/book.json')
@@ -75,7 +80,8 @@ module Reader
 
   def reader_music
     unless File.exist?('data/music.json')
-      File.open('data/music.json', 'w')
+      FileUtils.mkdir_p(File.dirname('data/music.json'))
+      FileUtils.touch('data/music.json')
       return []
     end
     read_file('data/music.json')
@@ -83,7 +89,8 @@ module Reader
 
   def reader_movie
     unless File.exist?('data/movie.json')
-      File.open('data/movie.json', 'w')
+      FileUtils.mkdir_p(File.dirname('data/movie.json'))
+      FileUtils.touch('data/movie.json')
       return []
     end
     read_file('data/movie.json')
@@ -91,7 +98,8 @@ module Reader
 
   def reader_game
     unless File.exist?('data/game.json')
-      File.open('data/game.json', 'w')
+      FileUtils.mkdir_p(File.dirname('data/game.json'))
+      FileUtils.touch('data/game.json')
       return []
     end
     read_file('data/game.json')
