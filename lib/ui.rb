@@ -1,4 +1,4 @@
-require './check_input'
+require_relative 'check_input'
 
 class Ui
   include CheckInput
