@@ -1,0 +1,20 @@
+data/genre.json
+  h_da978aeed56e72 1-5
+data/author.json
+  h_da978aeed56e72 1-5
+data/label.json
+  h_da978aeed56e72 1-5
+data/source.json
+  h_da978aeed56e72 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "0ab2898bb75394abb3abf45508c49c36fbfad6ae",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
