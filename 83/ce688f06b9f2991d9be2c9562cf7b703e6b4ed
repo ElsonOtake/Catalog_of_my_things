@@ -1,0 +1,14 @@
+lib/reader.rb
+  h_da978aeed56e72 55-58,61,63,65,67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "83ce688f06b9f2991d9be2c9562cf7b703e6b4ed",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
