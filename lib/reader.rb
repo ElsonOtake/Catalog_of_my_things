@@ -2,17 +2,18 @@ require 'json'
 require 'fileutils'
 
 module Reader
+  def ensure_file(file_name)
+    return true if File.exist?(file_name)
+
+    FileUtils.mkdir_p(File.dirname(file_name))
+    FileUtils.touch(file_name)
+    false
+  end
+
   def reader_instance(file_name)
-    unless File.exist?(file_name)
-      FileUtils.mkdir_p(File.dirname(file_name))
-      FileUtils.touch(file_name)
-      return []
-    end
-    instance_array = []
-    File.foreach(file_name) do |line|
-      instance_array << JSON.parse(line, create_additions: true)
-    end
-    instance_array
+    return [] unless ensure_file(file_name)
+
+    File.foreach(file_name).map { |line| JSON.parse(line, create_additions: true) }
   end
 
   def reader_genre
@@ -70,38 +71,26 @@ module Reader
   end
 
   def reader_book
-    unless File.exist?('data/book.json')
-      FileUtils.mkdir_p(File.dirname('data/book.json'))
-      FileUtils.touch('data/book.json')
-      return []
-    end
+    return [] unless ensure_file('data/book.json')
+
     read_file('data/book.json')
   end
 
   def reader_music
-    unless File.exist?('data/music.json')
-      FileUtils.mkdir_p(File.dirname('data/music.json'))
-      FileUtils.touch('data/music.json')
-      return []
-    end
+    return [] unless ensure_file('data/music.json')
+
     read_file('data/music.json')
   end
 
   def reader_movie
-    unless File.exist?('data/movie.json')
-      FileUtils.mkdir_p(File.dirname('data/movie.json'))
-      FileUtils.touch('data/movie.json')
-      return []
-    end
+    return [] unless ensure_file('data/movie.json')
+
     read_file('data/movie.json')
   end
 
   def reader_game
-    unless File.exist?('data/game.json')
-      FileUtils.mkdir_p(File.dirname('data/game.json'))
-      FileUtils.touch('data/game.json')
-      return []
-    end
+    return [] unless ensure_file('data/game.json')
+
     read_file('data/game.json')
   end
 
