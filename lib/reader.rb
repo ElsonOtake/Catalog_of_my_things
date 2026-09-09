@@ -33,19 +33,19 @@ module Reader
   end
 
   def read_genre(data)
-    @app.list_genres.find { |gnr| gnr.name == data[2] }
+    @app.list_genres.find { |gnr| gnr.name == data['genre_name'] }
   end
 
   def read_author(data)
-    @app.list_authors.find { |aut| aut.first_name == data[3] && aut.last_name == data[4] }
+    @app.list_authors.find { |aut| aut.first_name == data['author_first'] && aut.last_name == data['author_last'] }
   end
 
   def read_source(data)
-    @app.list_sources.find { |src| src.name == data[5] }
+    @app.list_sources.find { |src| src.name == data['source_name'] }
   end
 
   def read_label(data)
-    @app.list_labels.find { |lbl| lbl.title == data[6] && lbl.color == data[7] }
+    @app.list_labels.find { |lbl| lbl.title == data['label_title'] && lbl.color == data['label_color'] }
   end
 
   def read_file(file_name)
@@ -54,17 +54,17 @@ module Reader
       data = JSON.parse(line)
       case file_name
       when 'data/book.json'
-        file_array << @app.add_book(data[0], data[1], data[8], data[9], read_genre(data), read_author(data),
-                                    read_source(data), read_label(data))
+        file_array << @app.add_book(data['title'], data['publish_date'], data['publisher'], data['cover_state'],
+                                    read_genre(data), read_author(data), read_source(data), read_label(data))
       when 'data/music.json'
-        file_array << @app.add_music_album(data[0], data[1], data[8], read_genre(data), read_author(data),
-                                           read_source(data), read_label(data))
+        file_array << @app.add_music_album(data['title'], data['publish_date'], data['on_spotify'],
+                                           read_genre(data), read_author(data), read_source(data), read_label(data))
       when 'data/movie.json'
-        file_array << @app.add_movie(data[0], data[1], data[8], read_genre(data), read_author(data), read_source(data),
-                                     read_label(data))
+        file_array << @app.add_movie(data['title'], data['publish_date'], data['silent'],
+                                     read_genre(data), read_author(data), read_source(data), read_label(data))
       when 'data/game.json'
-        file_array << @app.add_game(data[0], data[1], data[8], data[9], read_genre(data), read_author(data),
-                                    read_source(data), read_label(data))
+        file_array << @app.add_game(data['title'], data['publish_date'], data['multiplayer'], data['last_played_at'],
+                                    read_genre(data), read_author(data), read_source(data), read_label(data))
       end
     end
     file_array
