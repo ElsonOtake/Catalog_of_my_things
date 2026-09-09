@@ -1,4 +1,8 @@
+require_relative 'json_referenceable'
+
 class Author
+  include JsonReferenceable
+
   attr_reader :first_name, :last_name, :items
 
   def initialize(first_name, last_name)
@@ -13,14 +17,9 @@ class Author
     @items << item unless @items.include?(item)
   end
 
-  def to_json(*args)
-    {
-      JSON.create_id => self.class.name,
-      'a' => [first_name, last_name]
-    }.to_json(*args)
-  end
+  private
 
-  def self.json_create(object)
-    new(*object['a'])
+  def json_fields
+    [first_name, last_name]
   end
 end

@@ -2,7 +2,7 @@ require 'json'
 require 'fileutils'
 
 module Reader
-  def ensure_file(file_name)
+  def ensure_file?(file_name)
     return true if File.exist?(file_name)
 
     FileUtils.mkdir_p(File.dirname(file_name))
@@ -11,7 +11,7 @@ module Reader
   end
 
   def reader_instance(file_name)
-    return [] unless ensure_file(file_name)
+    return [] unless ensure_file?(file_name)
 
     File.foreach(file_name).map { |line| JSON.parse(line, create_additions: true) }
   end
@@ -71,25 +71,25 @@ module Reader
   end
 
   def reader_book
-    return [] unless ensure_file('data/book.json')
+    return [] unless ensure_file?('data/book.json')
 
     read_file('data/book.json')
   end
 
   def reader_music
-    return [] unless ensure_file('data/music.json')
+    return [] unless ensure_file?('data/music.json')
 
     read_file('data/music.json')
   end
 
   def reader_movie
-    return [] unless ensure_file('data/movie.json')
+    return [] unless ensure_file?('data/movie.json')
 
     read_file('data/movie.json')
   end
 
   def reader_game
-    return [] unless ensure_file('data/game.json')
+    return [] unless ensure_file?('data/game.json')
 
     read_file('data/game.json')
   end

@@ -1,8 +1,11 @@
+require_relative 'json_referenceable'
+
 class Genre
+  include JsonReferenceable
+
   attr_reader :name, :items
 
   def initialize(name)
-    super()
     @id = Random.rand(1..1000)
     @name = name
     @items = []
@@ -13,14 +16,9 @@ class Genre
     item.genre = self unless item.genre.eql?(self)
   end
 
-  def to_json(*args)
-    {
-      JSON.create_id => self.class.name,
-      'a' => [name]
-    }.to_json(*args)
-  end
+  private
 
-  def self.json_create(object)
-    new(*object['a'])
+  def json_fields
+    [name]
   end
 end
