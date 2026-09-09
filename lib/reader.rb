@@ -32,19 +32,19 @@ module Reader
   end
 
   def read_genre(data)
-    @app.list_genres.select { |gnr| gnr.name == data[2] }[0]
+    @app.list_genres.find { |gnr| gnr.name == data[2] }
   end
 
   def read_author(data)
-    @app.list_authors.select { |aut| aut.first_name == data[3] && aut.last_name == data[4] }[0]
+    @app.list_authors.find { |aut| aut.first_name == data[3] && aut.last_name == data[4] }
   end
 
   def read_source(data)
-    @app.list_sources.select { |src| src.name == data[5] }[0]
+    @app.list_sources.find { |src| src.name == data[5] }
   end
 
   def read_label(data)
-    @app.list_labels.select { |lbl| lbl.title == data[6] && lbl.color == data[7] }[0]
+    @app.list_labels.find { |lbl| lbl.title == data[6] && lbl.color == data[7] }
   end
 
   def read_file(file_name)
