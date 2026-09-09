@@ -13,8 +13,10 @@ class Item
   %i[genre author source label].each do |attr|
     define_method("#{attr}=") do |value|
       ivar = "@#{attr}"
-      instance_variable_set(ivar, value) unless instance_variable_get(ivar).eql?(value)
-      instance_variable_get(ivar).add_item(self) unless instance_variable_get(ivar).items.include?(self)
+      current = instance_variable_get(ivar)
+      instance_variable_set(ivar, value) unless current.eql?(value)
+      updated = instance_variable_get(ivar)
+      updated.add_item(self) unless updated.items.include?(self)
     end
   end
 
