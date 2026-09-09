@@ -132,7 +132,7 @@ class Ui
   def list_option(class_name, class_array)
     select_option(class_name, class_array)
     list_size = class_array.size
-    @option = check_input('') { @option.match?(/^\d+$/) && (0..list_size - 1).any? { |a| a == @option.to_i } }
+    @option = check_input('') { @option.match?(/^\d+$/) && @option.to_i.between?(0, list_size - 1) }
   end
 
   def input_item_data
@@ -147,8 +147,8 @@ class Ui
   end
 
   def empty_list?
-    @app.list_genres.size.zero? || @app.list_authors.size.zero? ||
-      @app.list_sources.size.zero? || @app.list_labels.size.zero?
+    @app.list_genres.empty? || @app.list_authors.empty? ||
+      @app.list_sources.empty? || @app.list_labels.empty?
   end
 
   def add_a_thing(class_name)
