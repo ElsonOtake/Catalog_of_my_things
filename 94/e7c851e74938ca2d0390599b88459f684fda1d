@@ -1,0 +1,14 @@
+lib/ui.rb
+  h_da978aeed56e72 6-12,102-103,109,116,122-124,132-133,139,143,148-149
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "94e7c851e74938ca2d0390599b88459f684fda1d",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
