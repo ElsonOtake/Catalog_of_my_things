@@ -6,9 +6,8 @@ module Writer
   end
 
   def write_instances(class_array, class_file)
-    class_array.each do |data|
-      json_file = JSON.generate(data)
-      File.write(class_file, "#{json_file}\n", mode: 'a')
+    File.open(class_file, 'a') do |file|
+      class_array.each { |data| file.puts(JSON.generate(data)) }
     end
   end
 
@@ -20,12 +19,13 @@ module Writer
   end
 
   def write_array(class_array, class_file, *attr)
-    class_array.each do |data|
-      array_data = [data.title, data.publish_date, data.genre.name, data.author.first_name, data.author.last_name,
-                    data.source.name, data.label.title, data.label.color]
-      attr.each { |extra| array_data.push(data.send(extra)) }
-      json_file = JSON.generate(array_data)
-      File.write(class_file, "#{json_file}\n", mode: 'a')
+    File.open(class_file, 'a') do |file|
+      class_array.each do |data|
+        array_data = [data.title, data.publish_date, data.genre.name, data.author.first_name,
+                      data.author.last_name, data.source.name, data.label.title, data.label.color]
+        attr.each { |extra| array_data.push(data.send(extra)) }
+        file.puts(JSON.generate(array_data))
+      end
     end
   end
 
