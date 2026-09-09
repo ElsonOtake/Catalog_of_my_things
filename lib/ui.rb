@@ -3,6 +3,13 @@ require_relative 'check_input'
 class Ui
   include CheckInput
 
+  DISPLAY_FORMATTERS = {
+    'author' => ->(data) { "#{data.first_name} #{data.last_name}" },
+    'label' => ->(data) { "#{data.title} #{data.color}" },
+    'genre' => ->(data) { data.name },
+    'source' => ->(data) { data.name }
+  }.freeze
+
   def initialize(app)
     @app = app
     @title = ''
@@ -92,29 +99,29 @@ class Ui
   end
 
   def add_a_thing_book
-    publisher = check_input('Publisher ') { @option != '' }
-    cover_state = check_input('Cover state: [good/bad] ') { %w[good bad].include?(@option.downcase) }
+    publisher = check_input('Publisher ') { |input| input != '' }
+    cover_state = check_input('Cover state: [good/bad] ') { |input| %w[good bad].include?(input.downcase) }
     @app.add_book(@title, @publish_date, publisher, cover_state, @app.list_genres[@genre.to_i],
                   @app.list_authors[@author.to_i], @app.list_sources[@source.to_i], @app.list_labels[@label.to_i])
   end
 
   def add_a_thing_music
-    on_spotify = check_input('on Spotify?: [true/false] ') { %w[true false].include?(@option.downcase) }
+    on_spotify = check_input('on Spotify?: [true/false] ') { |input| %w[true false].include?(input.downcase) }
     @app.add_music_album(@title, @publish_date, on_spotify, @app.list_genres[@genre.to_i],
                          @app.list_authors[@author.to_i], @app.list_sources[@source.to_i],
                          @app.list_labels[@label.to_i])
   end
 
   def add_a_thing_movie
-    silent = check_input('Silent: [true/false] ') { %w[true false].include?(@option.downcase) }
+    silent = check_input('Silent: [true/false] ') { |input| %w[true false].include?(input.downcase) }
     @app.add_movie(@title, @publish_date, silent, @app.list_genres[@genre.to_i], @app.list_authors[@author.to_i],
                    @app.list_sources[@source.to_i], @app.list_labels[@label.to_i])
   end
 
   def add_a_thing_game
-    multiplayer = check_input('Multiplayer: [true/false] ') { %w[true false].include?(@option.downcase) }
-    lastplayed = check_input('Last played date: YYYY/MM/DD ') do
-      @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
+    multiplayer = check_input('Multiplayer: [true/false] ') { |input| %w[true false].include?(input.downcase) }
+    lastplayed = check_input('Last played date: YYYY/MM/DD ') do |input|
+      input.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
     @app.add_game(@title, @publish_date, multiplayer, lastplayed, @app.list_genres[@genre.to_i],
                   @app.list_authors[@author.to_i], @app.list_sources[@source.to_i], @app.list_labels[@label.to_i])
@@ -122,27 +129,24 @@ class Ui
 
   def select_option(class_name, class_array)
     puts "Select a #{class_name} from the following list by number"
-    class_array.each_with_index do |data, index|
-      puts "#{index}) #{data.first_name} #{data.last_name}" if class_name == 'author'
-      puts "#{index}) #{data.title} #{data.color}" if class_name == 'label'
-      puts "#{index}) #{data.name}" if %w[genre source].include?(class_name)
-    end
+    formatter = DISPLAY_FORMATTERS[class_name]
+    class_array.each_with_index { |data, index| puts "#{index}) #{formatter.call(data)}" }
   end
 
   def list_option(class_name, class_array)
     select_option(class_name, class_array)
     list_size = class_array.size
-    @option = check_input('') { @option.match?(/^\d+$/) && @option.to_i.between?(0, list_size - 1) }
+    @option = check_input('') { |input| input.match?(/^\d+$/) && input.to_i.between?(0, list_size - 1) }
   end
 
   def input_item_data
-    @title = check_input('Title: ') { @option != '' }
+    @title = check_input('Title: ') { |input| input != '' }
     @genre = list_option('genre', @app.list_genres)
     @author = list_option('author', @app.list_authors)
     @source = list_option('source', @app.list_sources)
     @label = list_option('label', @app.list_labels)
-    @publish_date = check_input('Publish date: YYYY/MM/DD ') do
-      @option.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
+    @publish_date = check_input('Publish date: YYYY/MM/DD ') do |input|
+      input.match?(%r{^(19|20)\d\d/(0[1-9]|1[012])/(0[1-9]|[1-2][0-9]|3[0-1])$})
     end
   end
 
