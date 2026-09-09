@@ -1,0 +1,24 @@
+lib/genre.rb
+  h_da978aeed56e72 1-2,4-5,19,21-22
+lib/source.rb
+  h_da978aeed56e72 1-2,4-5,19,21-22
+lib/json_referenceable.rb
+  h_da978aeed56e72 1-15
+lib/author.rb
+  h_da978aeed56e72 1-2,4-5,20,22-23
+lib/reader.rb
+  h_da978aeed56e72 5,14,74,80,86,92
+lib/label.rb
+  h_da978aeed56e72 1-2,4-5,20,22-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a167cf240af201a0815a8b90ef156a45df3c701a",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
