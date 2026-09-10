@@ -1,6 +1,6 @@
 module JsonReferenceable
-  def to_json(*)
-    { JSON.create_id => self.class.name, 'a' => json_fields }.to_json(*)
+  def to_json(*args)
+    { JSON.create_id => self.class.name, 'a' => json_fields }.to_json(*args)
   end
 
   def self.included(base)
