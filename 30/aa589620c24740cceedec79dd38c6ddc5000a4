@@ -1,0 +1,22 @@
+lib/thing_creator.rb
+  h_da978aeed56e72 1-74
+lib/selector.rb
+  h_da978aeed56e72 1-20
+lib/reader.rb
+  h_da978aeed56e72 51-66,71-72
+lib/lister.rb
+  h_da978aeed56e72 1-78
+lib/ui.rb
+  h_da978aeed56e72 2-4,8-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "30aa589620c24740cceedec79dd38c6ddc5000a4",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
