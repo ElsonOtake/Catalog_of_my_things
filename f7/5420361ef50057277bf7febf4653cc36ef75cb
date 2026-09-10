@@ -1,0 +1,25 @@
+lib/json_referenceable.rb
+  h_da978aeed56e72 2-3
+.gitignore
+  h_da978aeed56e72 2
+  h_da978aeed56e72 1
+.tool-versions
+  h_da978aeed56e72 1
+.github/workflows/tests.yml
+  h_da978aeed56e72 13
+.github/workflows/linters.yml
+  h_da978aeed56e72 14,20
+.rubocop.yml
+  h_da978aeed56e72 7-8,20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f75420361ef50057277bf7febf4653cc36ef75cb",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
