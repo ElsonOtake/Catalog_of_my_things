@@ -45,6 +45,49 @@ Cloning a repository
 
 - Type `git clone`, and then paste the URL you copied earlier.
 
+### Usage
+
+Run the app from the project root using Ruby.
+
+Make sure Ruby is installed on your machine:
+
+```
+bash
+  ruby -v
+```
+
+If it isn't installed, see ruby-lang.org for install instructions for your OS.
+
+From the project root, run:
+
+```
+bash
+  ruby lib/main.rb
+```
+
+The app will start in your terminal and show a welcome message followed by a numbered menu:
+
+```
+  Welcome to Catalog of my things App!
+
+  Please choose an option by entering a number:
+  0 - Exit
+  1 - List all books
+  2 - List all music albums
+  3 - List all movies
+  4 - List all games
+  5 - List all genres
+  6 - List all labels
+  7 - List all authors
+  8 - List all sources
+  9 - Add a book
+  10 - Add a music album
+  11 - Add a movie
+  12 - Add a game
+````
+
+- Enter the number for the option you want and follow the prompts.
+- On startup, the app reads existing data from the data/ folder (created automatically on first run if it doesn't exist). Selecting 0 - Exit saves all current data back to data/ before closing.
 
 ## Authors
 

@@ -6,9 +6,8 @@ module Writer
   end
 
   def write_instances(class_array, class_file)
-    class_array.each do |data|
-      json_file = JSON.generate(data)
-      File.write(class_file, "#{json_file}\n", mode: 'a')
+    File.open(class_file, 'a') do |file|
+      class_array.each { |data| file.puts(JSON.generate(data)) }
     end
   end
 
@@ -19,13 +18,24 @@ module Writer
     write_instances(@app.list_labels, 'data/label.json')
   end
 
+  def item_hash(data, extra_attrs)
+    hash = {
+      'title' => data.title,
+      'publish_date' => data.publish_date,
+      'genre_name' => data.genre.name,
+      'author_first' => data.author.first_name,
+      'author_last' => data.author.last_name,
+      'source_name' => data.source.name,
+      'label_title' => data.label.title,
+      'label_color' => data.label.color
+    }
+    extra_attrs.each { |attr| hash[attr.to_s] = data.send(attr) }
+    hash
+  end
+
   def write_array(class_array, class_file, *attr)
-    class_array.each do |data|
-      array_data = [data.title, data.publish_date, data.genre.name, data.author.first_name, data.author.last_name,
-                    data.source.name, data.label.title, data.label.color]
-      attr.each { |extra| array_data.push(data.send(extra)) }
-      json_file = JSON.generate(array_data)
-      File.write(class_file, "#{json_file}\n", mode: 'a')
+    File.open(class_file, 'a') do |file|
+      class_array.each { |data| file.puts(JSON.generate(item_hash(data, attr))) }
     end
   end
 

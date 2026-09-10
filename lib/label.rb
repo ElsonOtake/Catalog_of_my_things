@@ -1,4 +1,8 @@
+require_relative 'json_referenceable'
+
 class Label
+  include JsonReferenceable
+
   attr_reader :title, :color, :items
 
   def initialize(title, color)
@@ -13,14 +17,9 @@ class Label
     item.label = self unless item.label.eql?(self)
   end
 
-  def to_json(*args)
-    {
-      JSON.create_id => self.class.name,
-      'a' => [title, color]
-    }.to_json(*args)
-  end
+  private
 
-  def self.json_create(object)
-    new(*object['a'])
+  def json_fields
+    [title, color]
   end
 end

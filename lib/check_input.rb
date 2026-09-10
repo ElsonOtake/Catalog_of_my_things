@@ -3,7 +3,7 @@ module CheckInput
     loop do
       print str
       @option = gets.chomp.strip
-      break if yield
+      break if yield(@option)
     end
     @option
   end
