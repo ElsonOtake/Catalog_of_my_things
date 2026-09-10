@@ -48,24 +48,28 @@ module Reader
     @app.list_labels.find { |lbl| lbl.title == data['label_title'] && lbl.color == data['label_color'] }
   end
 
+  def build_record(file_name, data, refs)
+    genre, author, source, label = refs
+    case file_name
+    when 'data/book.json'
+      @app.add_book(data['title'], data['publish_date'], data['publisher'], data['cover_state'],
+                    genre, author, source, label)
+    when 'data/music.json'
+      @app.add_music_album(data['title'], data['publish_date'], data['on_spotify'], genre, author, source, label)
+    when 'data/movie.json'
+      @app.add_movie(data['title'], data['publish_date'], data['silent'], genre, author, source, label)
+    when 'data/game.json'
+      @app.add_game(data['title'], data['publish_date'], data['multiplayer'], data['last_played_at'],
+                    genre, author, source, label)
+    end
+  end
+
   def read_file(file_name)
     file_array = []
     File.foreach(file_name) do |line|
       data = JSON.parse(line)
-      genre = read_genre(data)
-      author = read_author(data)
-      source = read_source(data)
-      label = read_label(data)
-      case file_name
-      when 'data/book.json'
-        file_array << @app.add_book(data['title'], data['publish_date'], data['publisher'], data['cover_state'], genre, author, source, label)
-      when 'data/music.json'
-        file_array << @app.add_music_album(data['title'], data['publish_date'], data['on_spotify'], genre, author, source, label)
-      when 'data/movie.json'
-        file_array << @app.add_movie(data['title'], data['publish_date'], data['silent'], genre, author, source, label)
-      when 'data/game.json'
-        file_array << @app.add_game(data['title'], data['publish_date'], data['multiplayer'], data['last_played_at'], genre, author, source, label)
-      end
+      refs = [read_genre(data), read_author(data), read_source(data), read_label(data)]
+      file_array << build_record(file_name, data, refs)
     end
     file_array
   end
