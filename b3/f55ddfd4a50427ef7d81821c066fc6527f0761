@@ -1,0 +1,16 @@
+.github/workflows/tests.yml
+  h_da978aeed56e72 13
+.github/workflows/linters.yml
+  h_da978aeed56e72 11-12,14-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b3f55ddfd4a50427ef7d81821c066fc6527f0761",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
