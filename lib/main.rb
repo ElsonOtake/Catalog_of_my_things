@@ -13,12 +13,12 @@ class Main
   VALID_OPTIONS = (0..12).map(&:to_s).freeze
   EXIT_OPTION = '0'.freeze
   MENU_ACTIONS = {
-    '1' => :list_all_books,   '2' => :list_all_musics,
-    '3' => :list_all_movies,  '4' => :list_all_games,
-    '5' => :list_all_genres,  '6' => :list_all_labels,
+    '1' => :list_all_books, '2' => :list_all_musics,
+    '3' => :list_all_movies, '4' => :list_all_games,
+    '5' => :list_all_genres, '6' => :list_all_labels,
     '7' => :list_all_authors, '8' => :list_all_sources,
-    '9' => :add_a_book,       '10' => :add_a_music,
-    '11' => :add_a_movie,     '12' => :add_a_game
+    '9' => :add_a_book, '10' => :add_a_music,
+    '11' => :add_a_movie, '12' => :add_a_game
   }.freeze
 
   def initialize

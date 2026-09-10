@@ -6,8 +6,8 @@ class Ui
   DISPLAY_FORMATTERS = {
     'author' => ->(data) { "#{data.first_name} #{data.last_name}" },
     'label' => ->(data) { "#{data.title} #{data.color}" },
-    'genre' => ->(data) { data.name },
-    'source' => ->(data) { data.name }
+    'genre' => lambda(&:name),
+    'source' => lambda(&:name)
   }.freeze
 
   def initialize(app)
@@ -23,7 +23,7 @@ class Ui
 
   def header_all_item_class(class_name, class_array)
     puts "#{class_name.capitalize}s list\n\n"
-    puts "The #{class_name.capitalize} list is empty!" if class_array.size.zero?
+    puts "The #{class_name.capitalize} list is empty!" if class_array.empty?
   end
 
   def list_all_genres
@@ -74,7 +74,7 @@ class Ui
 
   def list_all_things(class_name, class_array)
     puts "#{class_name.capitalize} list\n\n"
-    puts "The #{class_name}s list is empty!" if class_array.size.zero?
+    puts "The #{class_name}s list is empty!" if class_array.empty?
     class_array.each do |data|
       list_all_items(data)
       list_extra_things(class_name, data)
