@@ -1,0 +1,15 @@
+spec/genre_spec.rb
+  h_da978aeed56e72 14,17,20-32,34-37,39
+  h_da978aeed56e72 9-10,12-13,15-16,18-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6655393d0a9af93ddcdc01443b3ccc8c73f4d9e3",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
