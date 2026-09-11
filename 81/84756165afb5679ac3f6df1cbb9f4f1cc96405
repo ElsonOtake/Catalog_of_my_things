@@ -1,0 +1,15 @@
+lib/main.rb
+  h_da978aeed56e72 57,61
+  h_da978aeed56e72 58-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8184756165afb5679ac3f6df1cbb9f4f1cc96405",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
