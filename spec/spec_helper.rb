@@ -1,4 +1,6 @@
+require 'json'
 require_relative '../lib/item'
+require_relative '../lib/json_referenceable'
 require_relative '../lib/genre'
 require_relative '../lib/author'
 require_relative '../lib/source'
