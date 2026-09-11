@@ -1,0 +1,14 @@
+spec/book_spec.rb
+  h_da978aeed56e72 22-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b1807c1851c8e22e456f9ca173bacef135a87748",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
