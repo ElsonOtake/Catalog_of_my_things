@@ -1,0 +1,17 @@
+.gitignore
+  h_da978aeed56e72 3
+  h_da978aeed56e72 2
+spec/item_spec.rb
+  h_da978aeed56e72 1-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "dba3ecebb556ce8880602a1ba154ef79305ce336",
+  "prompts": {},
+  "humans": {
+    "h_da978aeed56e72": {
+      "author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
