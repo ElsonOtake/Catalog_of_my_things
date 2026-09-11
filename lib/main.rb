@@ -54,6 +54,8 @@ class Main
   end
 end
 
-puts "\nWelcome to Catalog of my things App!"
-main = Main.new
-main.menu
+if __FILE__ == $PROGRAM_NAME
+  puts "\nWelcome to Catalog of my things App!"
+  main = Main.new
+  main.menu
+end
